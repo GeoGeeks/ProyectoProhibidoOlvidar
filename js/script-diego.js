@@ -1,8 +1,8 @@
 $( document ).ready(function() {
 	var dias = {};
 	dias['daysMin'] = ['LU','MA','MI','JU','VI','SA','DO'];
-	dias['months'] = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-	dias['monthsShort'] = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+	dias['months'] = ['ENERO','FEBRERO','MARZO','ABRIL','MAYO','JUNIO','JULIO','AGOSTO','SEPTIEMBRE','OCTUBRE','NOVIEMBRE','DICIEMBRE'];
+	dias['monthsShort'] = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
 	$('#date').DatePicker({
 		flat: true,
 		date: '1111-11-11',
@@ -11,6 +11,8 @@ $( document ).ready(function() {
 		starts: 6,
 		view: 'years',
 		locale: dias,
+		prev: "<",
+		next: ">"
 	});
 });
 

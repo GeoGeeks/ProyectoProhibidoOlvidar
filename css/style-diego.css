@@ -104,10 +104,34 @@ html, body{
 .datepicker{
 	width: 340px !important;
 	height: 340px !important;
+	font-family: AvenirNextLTPro_Regular !important;
+	font-size: 18px !important;
+
 }
-.datepickerViewYears{
-	/*width: 340px !important;
-	height: 640px !important;*/
+.datepickerContainer table{
+	width: 320px !important;
+	height: 300px !important;
+}
+.datepickerContainer{
+	background-color: transparent;
+}
+.datepickerWeek{
+	visibility: hidden;
+}
+.datepickerMonth{
+	font-size: 24px;
+}
+.datepickerDays a{
+	padding-right: 17px !important;
+}
+.datepickerDoW span{
+	color: #4c637f;
+}
+.datepickerDoW{
+	height: 60px;
+}
+.datepickerYears td{
+	padding-right: 17px !important;
 }
 option{
 	background-color: #47494E;
