@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Prohibido Olvidar</title>
+	<link rel="stylesheet" href="css/style-diego.css">
+	<link rel="stylesheet" media="screen" type="text/css" href="css/datepicker.css" />
+	<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="js/datepicker.js"></script>
+	<script type="text/javascript" src="js/script-diego.js" ></script>
+</head>
+<body>
+	<div id="banner">
+		<div id="background">
+			<div id="imagen_banner">
+				<img src="imagenes/logo_banner.png">
+			</div>
+			<div id="botones_compartir">
+				<div style="width:100%; height:22px;background-image:url('imagenes/rectangulo_texto_banner.png');line-height: 22px;text-align: center;">
+					<p class="textos" style="font-size: 12px;margin: 0px;">Compartir este especial:</p>
+				</div>
+				<div style="width:100%; height:58px;">
+					<div style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;">
+						<a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://localhost/ProhibidoOlvidar/rostros.html&amp;p[images][0]=http://logicum.co/wp-content/uploads/2013/01/sharetweetbuttons.jpg&amp;p[title]=probando+&amp;p[summary]=Build your custom share buttons from normal images with examples on each button" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><img src="imagenes/facebook_banner.png"></a>
+					</div>
+					<div style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
+						<a onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="http://twitter.com/home?status=Comparta%20http://localhost/ProhibidoOlvidar/rostros.html"><img src="imagenes/twitter_banner.png"></a>
+					</div>
+					<div style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
+						<img src="imagenes/instagram_banner.png">
+					</div>
+				</div>
+			</div>
+			<div id="botones_menu">
+				<div id="div_botones_menu" style="width:800px; height:100%;margin-left: auto;margin-right: auto;">
+					<div id="boton_rostros" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
+						<p class="textos" style="font-size: 16px;margin:0px;">LOS ROSTROS</p>
+					</div>
+					<div id="boton_mapa" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
+						<p class="textos" style="font-size: 16px;margin:0px;">MAPA</p>
+					</div>
+					<div id="boton_formulario" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
+						<p class="textos" style="font-size: 16px;margin:0px;">CUÉNTENOS SU HISTORIA</p>
+					</div>
+					<div id="boton_preguntas" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
+						<p class="textos" style="font-size: 16px;margin:0px;">PREGUNTAS FRECUENTES</p>
+					</div>					
+				</div>
+			</div>
+		</div>
+		<div id="backgroundPopUp">
+			<div style="width:468px;height:410px;margin-top: 400px;background-color: rgba(0,0,0,0.7);margin-left: auto;margin-right: auto;">
+				<p id="date"></p>
+				<img src="imagenes/cerrar_calendario.png" onclick="cerraCalendario()">
+			</div>
+		</div>
+	</div>
+	<div id="body">
+		<div id="titulo">
+			CUÉNTENOS SU HISTORIA
+		</div>
+		<div>
+			<p id="parrafo">Colombia lleva décadas en una guerra sin sentido, en la que los pueblos y las personas han sufrido. El objetivo de este proyecto es recoger esas historias, hacer memoria del dolor de toda una nación y darle rostros a esta tragedia, que es la de todo un país.</p>
+		</div>
+		<div id="formulario">
+
+			<div style="margin-top: 27px;height: 52px;">
+			<p class="textos" style="float: left;margin-left: 17px;margin-right: 4px;">Los campos con</p><p class="textos" style="float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;margin-right: 4px;color:#4c637f !important;">*</p><p class="textos" style="float: left;"> son obligatorios</p></div>
+
+			<div style="margin-top: 2px;">
+			<p class="textos" style="float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;color:#4c637f !important;text-align: left; width: 17px;">*</p><p class="textos" style="float:left">Por favor, escriba el nombre de la víctima:</p>
+			</div>
+
+			<input type="text" class="textos"placeholder="    Nombre Completo" onfocus="this.placeholder = ''"style="margin-left: 17px;color: #adacb2;width:382px;width: 382px;background-color: rgba(255,255,255,0.2);height: 30px;border: 1px solid;border-color: #4c637f;">
+			<p class="textos" style="margin-left:17px;color:#5189B6 !important; float:left">Por favor, escriba el nombre completo de la víctima:</p>
+
+			<div style="margin-top: 54px;width: 100%;height: 41px;">
+				<p class="textos" style="margin-bottom: 0px;float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;color:#4c637f !important;text-align: left; width: 17px;">*</p>
+				<p class="textos" style="margin-bottom: 0px;float:left">Género:</p>
+			</div>
+			
+			<div class="textos" style="margin-left: 15px; margin-top:3px;">
+				<input type="checkbox" id="c1" name="cc" />
+				<label for="c1"><span></span>Hombre</label>
+				<input type="checkbox" id="c2" name="cc" />
+				<label for="c2"><span></span>Mujer</label>
+			</div>
+
+			<p class="textos" style="margin-top: 5px; margin-left:17px;color:#5189B6 !important; float:left">Por favor elija un género</p>
+
+			<div style="margin-top: 45px;width: 100%;height: 41px;">
+				<p class="textos" style="margin-bottom: 0px;float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;color:#4c637f !important;text-align: left; width: 17px;">*</p>
+				<p class="textos" style="margin-bottom: 0px;float:left">Elija el departamento donde ocurrieron los hechos violentos:</p>
+			</div>
+			<select class="textos selectFormulario" style="width: 383px;height: 33px;margin-left: 17px;margin-top: 10px;">
+				<option value="" disabled selected>    Departamento</option>
+				<option value="" >Cundinamarca</option>
+				<option value="" >Huila</option>
+				<option value="" >Valle del cauca</option>
+			</select>
+			<p class="textos" style="margin-top: 14px; margin-left:17px;color:#5189B6 !important; float:left">Por favor elija un departamento</p>
+			<p class="textos" style="margin-bottom: 0px;float:left;margin-left:17px;">Elija la ciudad o el municipio donde ocurrieron los hechos violentos:</p>
+			<select class="textos selectFormulario" style="width: 383px;height: 33px;margin-left: 17px;margin-top: 20px;">
+				<option value="" disabled selected>Municipios</option>
+				<option value="" >Neiva</option>
+				<option value="" >Nataga</option>
+				<option value="" >Rivera</option>
+			</select>
+			<p class="textos" style="margin-top:40px;margin-left:17px; margin-bottom: 0px;float:left">Díganos la edad que tenía la víctima en ese momento:</p>
+			<div style="width: 120px; height: 33px; margin-left:17px;margin-top:80px;">
+				<select class="textos selectFormulario" style="width: 118px;height: 33px;" >
+				<option value="" disabled selected>Edad</option>
+				<option value="001">1</option><option value="002">2</option><option value="003">3</option><option value="004">4</option><option value="005">5</option><option value="006">6</option><option value="007">7</option><option value="008">8</option><option value="009">9</option><option value="010">10</option><option value="011">11</option><option value="012">12</option><option value="013">13</option><option value="014">14</option><option value="015">15</option><option value="016">16</option><option value="017">17</option><option value="018">18</option><option value="019">19</option><option value="020">20</option><option value="021">21</option><option value="022">22</option><option value="023">23</option><option value="024">24</option><option value="025">25</option><option value="026">26</option><option value="027">27</option><option value="028">28</option><option value="029">29</option><option value="030">30</option><option value="031">31</option><option value="032">32</option><option value="033">33</option><option value="034">34</option><option value="035">35</option><option value="036">36</option><option value="037">37</option><option value="038">38</option><option value="039">39</option><option value="040">40</option><option value="041">41</option><option value="042">42</option><option value="043">43</option><option value="044">44</option><option value="045">45</option><option value="046">46</option><option value="047">47</option><option value="048">48</option><option value="049">49</option><option value="050">50</option><option value="051">51</option><option value="052">52</option><option value="053">53</option><option value="054">54</option><option value="055">55</option><option value="056">56</option><option value="057">57</option><option value="058">58</option><option value="059">59</option><option value="050">50</option><option value="061">61</option><option value="062">62</option><option value="063">63</option><option value="064">64</option><option value="065">65</option><option value="066">66</option><option value="067">67</option><option value="068">68</option><option value="069">69</option><option value="070">70</option><option value="071">71</option><option value="072">72</option><option value="073">73</option><option value="074">74</option><option value="075">75</option><option value="076">76</option><option value="077">77</option><option value="078">78</option><option value="079">79</option><option value="080">80</option><option value="081">81</option><option value="082">82</option><option value="083">83</option><option value="084">84</option><option value="085">85</option><option value="086">86</option><option value="087">87</option><option value="088">88</option><option value="089">89</option><option value="090">90</option><option value="091">91</option><option value="092">92</option><option value="093">93</option><option value="094">94</option><option value="095">95</option><option value="096">96</option><option value="097">97</option><option value="098">98</option><option value="099">99</option><option value="100">100</option><option value="101">101</option><option value="102">102</option><option value="103">103</option><option value="104">104</option><option value="105">105</option><option value="106">106</option><option value="107">107</option><option value="108">108</option><option value="109">109</option><option value="110">110</option><option value="111">111</option><option value="112">112</option><option value="113">113</option><option value="114">114</option><option value="115">115</option><option value="116">116</option><option value="117">117</option><option value="118">118</option><option value="119">119</option><option value="120">120</option></select>
+			</div>
+			<p class="textos" style="margin-top:40px;margin-left:17px; margin-bottom: 0px;float:left;">Denos la fecha exacta o aproximada del hecho violento:</p>
+			<div style="margin-top: 63px; margin-left: 17px;width: 549px;height: 52px;margin-top: 80px;">
+				<select class="textos selectFormulario" style="width: 118px;height: 33px;margin-right: 12px;float: left;" >
+				<option value="" disabled selected>Día</option>
+				<option value="001">1</option><option value="002">2</option><option value="003">3</option><option value="004">4</option><option value="005">5</option><option value="006">6</option><option value="007">7</option><option value="008">8</option><option value="009">9</option><option value="010">10</option><option value="011">11</option><option value="012">12</option><option value="013">13</option><option value="014">14</option><option value="015">15</option><option value="016">16</option><option value="017">17</option><option value="018">18</option><option value="019">19</option><option value="020">20</option><option value="021">21</option><option value="022">22</option><option value="023">23</option><option value="024">24</option><option value="025">25</option><option value="026">26</option><option value="027">27</option><option value="028">28</option><option value="029">29</option><option value="030">30</option><option value="031">31</option>
+				</select>
+				<select class="textos selectFormulario" style="width: 118px;height: 33px;margin-right: 14px;float: left;" >
+				<option value="" disabled selected>Mes</option>
+				<option value="001">1</option><option value="002">2</option><option value="003">3</option><option value="004">4</option><option value="005">5</option><option value="006">6</option><option value="007">7</option><option value="008">8</option><option value="009">9</option><option value="010">10</option><option value="011">11</option><option value="012">12</option>
+				</select>
+				<select class="textos selectFormulario" style="width: 118px;height: 33px;margin-right: 10px;float: left;" >
+				<option value="" disabled selected>Año</option>
+				<option value="1998">1998</option><option value="1999">1999</option><option value="2000">2000</option><option value="2001">2001</option><option value="2002">2002</option><option value="2003">2003</option><option value="2004">2004</option><option value="2005">2005</option><option value="2006">2006</option><option value="2007">2007</option><option value="2008">2008</option><option value="2009">2009</option>
+				</select>
+				<img src="imagenes/calendario.png" style="height: 36px;margin-top: -3px;float: left;cursor:pointer;" onclick="verCalendario()">
+			</div>
+			<p class="textos" style="margin-top:20px;margin-left:17px; margin-bottom: 0px;float:left">Díganos el grupo armado que cometió el hecho violento:</p>
+			<select class="textos selectFormulario" style="width: 250px;height: 33px;margin-left: 17px;margin-top: 17px;" >
+				<option value="" disabled selected>Grupo Armado</option>
+				<option value="FARC">Fuerzas Armadas Revolucionarias</option>
+				<option value="ELN">Ejercito de Liberación Nacional</option>
+			</select>
+			<div style="margin-top: 52px;margin-left: 63px;width: 396px;height: 44px;">
+				<div class="boton_formulario" style="cursor:pointer; float: left;width: 182px;height: 40px;line-height: 40px;text-align: center;border: 2px solid;border-color: #4c637f;margin-right: 23px;" >
+					<p class="textos" style="margin:0px;">CANCELAR</p>
+				</div>
+				<div class="boton_formulario" style="cursor:pointer; float: left;width: 182px;height: 40px;line-height: 40px;text-align: center;border: 2px solid;border-color: #4c637f;">
+					<p class="textos" style="margin:0px;" onclick="mostrar()">IR AL PASO 2</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		
+	</div>
+</body>
+</html>

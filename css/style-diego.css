@@ -1,0 +1,200 @@
+html, body{
+	width: 100%;
+	height: auto;
+	margin: 0px;
+	background-image: url("../imagenes/background.png");
+}
+#banner{
+	width: 100%;
+	height: 80px;
+	background-image: url("../imagenes/fondo_inicio_1.png");
+	background-size: 100% 100%;
+}
+#background{
+	background-image: url("../imagenes/fondo_inicio_2.png");
+	width: 100%;
+	height: 100%
+}
+#imagen_banner{
+	float: left;
+	margin-left: 68px;
+	height: 100%;
+	width: 236px;
+}
+#botones_compartir{
+	float: right;
+	width: 190px;
+	height: 100%;
+}
+#botones_menu{
+	width: auto;
+	margin-left: 304px;
+	margin-right: 190px;
+	height: 100%;
+}
+/*-------------------------------*/
+#body{
+	width: 100%;
+	height: 1248px;
+}
+#footer{
+	width: 100%;
+	height: 64px;
+	background-image: url("../imagenes/piePag.png");
+	background-size: 100% 100%;
+}
+#titulo{
+	width:328px; 
+	height:42px;
+	margin-left: auto;
+	margin-right: auto;
+	font-family: AvenirNextLTPro_Regular;
+	color: white;
+	line-height: 42px;
+	text-align: center;
+	border: 2px solid;
+	border-color: rgb(67,65,66);
+	margin-top: 50px;
+	font-size: 18px;
+}
+#parrafo{
+	font-family: AvenirNextLTPro_Regular;
+	color: #adacb2;
+	margin-left: auto;
+	margin-right: auto;
+	width: 789px;
+	height: 78px;
+	line-height: 28px;
+	font-size: 18px;
+	text-align: left;
+	margin-top: 48px;
+}
+.textos{
+	color: white;
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 17px;
+}
+#formulario{
+	width: 566px;
+	height: 995px;
+	margin-left: 413px;
+	margin-right: auto;
+}
+.selectFormulario{
+	background-image: url('../imagenes/arrow_down.png'), -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0.2));
+	background-color: transparent;
+	background-position: 100% center;
+	background-repeat: no-repeat;
+	border: 1px solid;
+	border-color: #4c637f;
+	-webkit-appearance: button;
+	cursor: pointer;
+	padding: 0 0 0 13px;
+}
+.boton_formulario:active {
+    background-color: #4c637f;
+}
+#backgroundPopUp{
+	width: 100%;
+	height: 1296px;
+	position: absolute;
+	display: none;
+	background-color: rgba(34, 34, 34, 0.8);
+}
+.datepicker{
+	width: 340px !important;
+	height: 340px !important;
+}
+.datepickerViewYears{
+	/*width: 340px !important;
+	height: 640px !important;*/
+}
+option{
+	background-color: #47494E;
+}
+input[type="checkbox"] {
+    display:none;
+}
+input[type="checkbox"] + label {
+    cursor:pointer;
+}
+input[type="checkbox"] + label span {
+    display:inline-block;
+    width:26px;
+    height:31px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    background:url(../imagenes/radio.png) -28px top no-repeat;
+    cursor:pointer;
+}
+input[type="checkbox"]:checked + label span {
+    background:url(../imagenes/radio.png) left top no-repeat;
+}
+@font-face {
+   font-family: AvenirNextLTPro_Bold;
+   src: url(../font/AvenirNextLTPro-Bold.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_BoldCn;
+   src: url(../font/AvenirNextLTPro-BoldCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_BoldCnIt;
+   src: url(../font/AvenirNextLTPro-BoldCnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_Cn;
+   src: url(../font/AvenirNextLTPro-Cn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_CnIt;
+   src: url(../font/AvenirNextLTPro-CnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_Demi;
+   src: url(../font/AvenirNextLTPro-Demi.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_DemiCn;
+   src: url(../font/AvenirNextLTPro-DemiCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_DemiCnIt;
+   src: url(../font/AvenirNextLTPro-DemiCnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_DemiIt;
+   src: url(../font/AvenirNextLTPro-DemiIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_HeavyCn;
+   src: url(../font/AvenirNextLTPro-HeavyCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_HeavyCnIt;
+   src: url(../font/AvenirNextLTPro-HeavyCnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_It;
+   src: url(../font/AvenirNextLTPro-It.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_MediumCn;
+   src: url(../font/AvenirNextLTPro-MediumCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_MediumCnIt;
+   src: url(../font/AvenirNextLTPro-MediumCnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_Regular;
+   src: url(../font/AvenirNextLTPro-Regular.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_UltLtCn;
+   src: url(../font/AvenirNextLTPro-UltLtCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_UltLtCnIt;
+   src: url(../font/AvenirNextLTPro-UltLtCnIt.otf);
+}
