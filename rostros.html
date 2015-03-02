@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	 
+
+	<title>Prohibido Olvidar</title>
+	<link rel="stylesheet" href="css/styleAaron.css">
+	<meta name="Title" content="Titulo de la página">
+	<script src="http://js.arcgis.com/3.12/"></script>
+	<script type="text/javascript" src="js/cargarDatos.js"></script>
+</head>
+<body>
+		
+	<div id="fb-root"></div>
+	<script>
+	(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) return;
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.0";
+		  fjs.parentNode.insertBefore(js, fjs);
+	}
+	(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script type="text/javascript">
+		function shareFace(){
+			document.getElementById("botonFace").click();
+		} 
+	</script>
+
+	<div id="banner">
+		<div id="background">
+			<div id="imagen_banner">
+				<img src="imagenes/logo_banner.png">
+			</div>
+			<div id="botones_compartir">
+				<div style="width:100%; height:22px;background-image:url('imagenes/rectangulo_texto_banner.png');line-height: 22px;text-align: center;">
+					<p class="textos" style="font-size: 12px;margin: 0px;">Compartir este especial:</p>
+				</div>
+				<div style="width:100%; height:58px;">
+					<div style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;">
+						<a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://localhost/ProhibidoOlvidar/rostros.html&amp;p[images][0]=http://logicum.co/wp-content/uploads/2013/01/sharetweetbuttons.jpg&amp;p[title]=probando+&amp;p[summary]=Build your custom share buttons from normal images with examples on each button" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" ><img src="imagenes/facebook_banner.png"></a>
+					</div>
+					<div style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
+						<a onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="http://twitter.com/home?status=Comparta%20http://localhost/ProhibidoOlvidar/rostros.html"><img src="imagenes/twitter_banner.png"></a>
+					</div>
+					<div style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
+						<img src="imagenes/instagram_banner.png">
+					</div>
+				</div>
+			</div>
+			<div id="botones_menu">
+				<div id="div_botones_menu" style="width:800px; height:100%;margin-left: auto;margin-right: auto;">
+					<div id="boton_rostros" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
+						<p class="textos" style="font-size: 16px;margin:0px;">LOS ROSTROS</p>
+					</div>
+					<div id="boton_mapa" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
+						<p class="textos" style="font-size: 16px;margin:0px;">MAPA</p>
+					</div>
+					<div id="boton_formulario" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
+						<p class="textos" style="font-size: 16px;margin:0px;">CUÉNTENOS SU HISTORIA</p>
+					</div>
+					<div id="boton_preguntas" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
+						<p class="textos" style="font-size: 16px;margin:0px;">PREGUNTAS FRECUENTES</p>
+					</div>					
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="body">
+		<div id="tituloRostros">
+			<h1>LOS ROSTROS</h1>
+		</div>
+		<div id="centroTexto">
+			<p>Vea en los rostros de los protagonistas la memoria de una guerra larga y dolorosa</p>
+		</div>
+		<div id="filtroRostros">
+			<div id="textoFiltro">
+				<p>Filtrar por: </p>
+			</div>
+			<div id="filtroEdad">
+				<select style="padding: 0 0 0 61px !important;">
+				  <option value="volvo">EDAD</option>
+				  <option value="saab">15 - 30</option>
+				  <option value="opel">30-60</option>
+				  <option value="audi">MÁS DE 60</option>
+				</select>
+			</div>
+			<div id="filtroGenero">
+				<select>
+				  <option value="volvo">GENERO</option><br/>
+				  <option value="saab">FEMENINO</option>
+				  <option value="opel">MASCULINO</option>
+				</select>
+			</div>
+			<div id="filtroGrupo">
+				<select>
+				  <option value="volvo" style="text-align:center">GRUPO DEL QUE FUE VÍCTIMA</option>
+				  <option value="saab" style="text-align:center">FARC</option>
+				  <option value="opel">ELN</option>
+				</select>
+			</div>	
+		</div>
+		<div id="rostrosParteAbajo">
+			<div id="rostrosGaleria">
+			<!--Fila Vertical 1-->
+				<div onclick="execute()" class="rostro">
+					<div class="nombreRostro">Angy Castañeda</div>
+				</div>
+				<div class="rostro" style="margin-top:177px;">
+					<div class="nombreRostro">Alejandro Barón</div>
+				</div>
+				<div class="rostro" style="margin-top:356px;">
+					<div class="nombreRostro">Felipe Gutíerrez</div>
+				</div>
+
+			<!--Fila Vertical 2-->
+				<div class="rostro" style="margin-left:176px;">
+					<div class="nombreRostro">Carlos Escobar</div>
+				</div>
+				<div class="rostro" style="margin-top:177px; margin-left:176px;">
+					<div class="nombreRostro">Consuelo Perdomo</div>
+				</div>
+				<div class="rostro" style="margin-top:356px; margin-left:176px;">
+					<div class="nombreRostro">Rubén Alzate</div>
+				</div>
+
+			<!--Fila Vertical 3-->
+				<div class="rostro" style="margin-left:353px;">
+					<div class="nombreRostro">Julian Andres Castillo</div>
+				</div>
+				<div class="rostro" style="margin-top:177px; margin-left:353px;">
+					<div class="nombreRostro">Clara Rojas</div>
+				</div>
+				<div class="rostro" style="margin-top:356px; margin-left:353px;">
+					<div class="nombreRostro">Julian Andres Castillo</div>
+				</div>
+
+			<!--Fila Vertical 4-->
+				<div class="rostro" style="margin-left:532px;">
+					<div class="nombreRostro">Camilo Carvajal</div>
+				</div>
+				<div class="rostro" style="margin-top:177px; margin-left:532px;">
+					<div class="nombreRostro">Felipe Gutierrez</div>
+				</div>
+				<div class="rostro" style="margin-top:356px; margin-left:532px;">
+					<div class="nombreRostro">William Calderon</div>
+				</div>
+
+			<!--Fila Vertical 5-->
+				<div class="rostro" style="margin-left:703px;">
+					<div class="nombreRostro">William Calderon</div>
+				</div>
+				<div class="rostro" style="margin-top:177px; margin-left:703px;">
+					<div class="nombreRostro">Angy Castañeda</div>
+				</div>
+				<div class="rostro" style="margin-top:356px; margin-left:703px;">
+					<div class="nombreRostro">Miguel Sarria</div>
+				</div>
+
+			<!--Fila Vertical 6-->
+				<div class="rostro" style="margin-left:881px;">
+					<div class="nombreRostro">Julian Andres Castillo</div>
+				</div>
+				<div class="rostro" style="margin-top:177px; margin-left:881px;">
+					<div class="nombreRostro">Clara Rojas</div>
+				</div>
+				<div class="rostro" style="margin-top:356px; margin-left:881px;">
+					<div class="nombreRostro">Julian Andres Castillo</div>
+				</div>
+			</div>
+			<div id="rostrosDudas">
+				<p>Si tiene alguna duda o si desea despublicar una historia, escribanos a <a href="mailto:oscloz@eltiempo.com?Subject=Hello%20again" target="_top">oscloz@eltiempo.com</a> </p>
+			</div>
+		</div>
+		
+	</div>
+	<div id="footer">
+		
+	</div>
+</body>
+</html>
