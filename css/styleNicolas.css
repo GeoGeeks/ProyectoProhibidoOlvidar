@@ -1,0 +1,351 @@
+html, body{
+	width: 100%;
+	height: 914px;
+	margin: 0px;
+	background-image: url("../imagenes/background.png");
+}
+#banner{
+	width: 100%;
+	height: 80px;
+	background-image: url("../imagenes/Banner.png");
+	background-size: 100% 100%;
+}
+#body{
+	width: 100%;
+	height: 770px;
+}
+#footer{
+	width: 100%;
+	height: 64px;
+	background-image: url("../imagenes/piePag.png");
+	background-size: 100% 100%;
+}
+@font-face {
+   font-family: AvenirNextLTPro_Bold;
+   src: url(../font/AvenirNextLTPro-Bold.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_BoldCn;
+   src: url(../font/AvenirNextLTPro-BoldCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_BoldCnIt;
+   src: url(../font/AvenirNextLTPro-BoldCnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_Cn;
+   src: url(../font/AvenirNextLTPro-Cn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_CnIt;
+   src: url(../font/AvenirNextLTPro-CnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_Demi;
+   src: url(../font/AvenirNextLTPro-Demi.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_DemiCn;
+   src: url(../font/AvenirNextLTPro-DemiCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_DemiCnIt;
+   src: url(../font/AvenirNextLTPro-DemiCnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_DemiIt;
+   src: url(../font/AvenirNextLTPro-DemiIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_HeavyCn;
+   src: url(../font/AvenirNextLTPro-HeavyCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_HeavyCnIt;
+   src: url(../font/AvenirNextLTPro-HeavyCnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_It;
+   src: url(../font/AvenirNextLTPro-It.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_MediumCn;
+   src: url(../font/AvenirNextLTPro-MediumCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_MediumCnIt;
+   src: url(../font/AvenirNextLTPro-MediumCnIt.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_Regular;
+   src: url(../font/AvenirNextLTPro-Regular.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_UltLtCn;
+   src: url(../font/AvenirNextLTPro-UltLtCn.otf);
+}
+@font-face {
+   font-family: AvenirNextLTPro_UltLtCnIt;
+   src: url(../font/AvenirNextLTPro-UltLtCnIt.otf);
+}
+.seleccionar{
+	background-image: url('../imagenes/arrow_down.png'), -webkit-linear-gradient(transparent, transparent 40%, transparent);
+	background-color: transparent;
+	background-position: 100% center;
+	background-repeat: no-repeat;
+	border: 1px solid;
+	border-color: transparent;
+	-webkit-appearance: button;
+	cursor: pointer;
+	padding: 0 0 0 13px;
+	height: 33px;
+	color: rgb(67,65,66);
+}
+select:before{
+	background-image: url('../imagenes/arrow_up.png'), -webkit-linear-gradient(transparent, transparent 40%, transparent);
+	}
+option{
+	background-color: #47494E;
+	color:white;
+}
+
+/* estilos banner */
+
+#banner{
+	width: 100%;
+	height: 80px;
+	background-image: url("../imagenes/fondo_inicio_1.png");
+	background-size: 100% 100%;
+}
+#background{
+	background-image: url("../imagenes/fondo_inicio_2.png");
+	width: 100%;
+	height: 100%
+}
+#imagen_banner{
+	float: left;
+	margin-left: 68px;
+	height: 100%;
+	width: 236px;
+}
+#botones_compartir{
+	float: right;
+	width: 190px;
+	height: 100%;
+}
+#botones_menu{
+	width: auto;
+	margin-left: 304px;
+	margin-right: 190px;
+	height: 100%;
+}
+
+.textos{
+	color: white;
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 17px;
+}
+
+
+
+
+
+/* xxxxxxxxxxx */
+#tituloRostros{
+	margin-top: 45px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 270px;
+	height: 39px;
+	border-style: solid;
+	border-width: 1px;
+	text-align: center;
+	border-color: rgb(67,65,66);
+	line-height: 39px;
+
+}
+#tituloRostros:target{
+	border-color: red;
+}
+#tituloRostros h1{
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 19px;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+#centroTexto{
+	width: 790px;
+	height: 39px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top: solid;
+	border-bottom: solid;
+	border-width: 1px;
+	text-align: center;
+	border-color: rgb(67,65,66);
+	line-height: 39px;
+	padding: 0;
+}
+#centroTexto p{
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 19px;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+#filtroRostros{
+	position: relative;
+	width: 790px;
+	height: 33px;
+	margin-left: auto;
+	margin-right: auto;
+	border-top: solid;
+	border-bottom: solid;
+	border-width: 1px;
+	text-align: center;
+	border-color: rgb(67,65,66);
+	line-height: 39px;
+	padding: 0;
+}
+#filtroRostros p{
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 19px;
+	color: white;
+	margin: 0;
+	padding: 0;
+}
+#filtroRostros ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+#filtroRostros li {
+    display: inline;
+}
+#textoFiltro{
+	width: 111px;
+	height: 33px;
+	text-align: center;
+	line-height: 39px;
+	padding: 0;
+	border-right: solid;
+	border-color: rgb(67,65,66);
+	border-width: 1px; 
+}
+#filtroEdad select{
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 16px;
+	position: absolute;
+	width: 203px;
+	height: 33px;
+	left: 112px;
+	top: 0;
+}
+#filtroGenero select{
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 16px;
+	position: absolute;
+	width: 161px;
+	height: 33px;
+	left: 314px;
+	top: 0;
+}
+#filtroGrupo select{
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 16px;
+	position: absolute;
+	width: 313px;
+	height: 33px;
+	left: 475px;
+	top: 0;
+}
+#verFotos{
+	width: 1031px;
+	height: 501px;
+}
+
+
+/* mapa */
+
+#mapa{
+	border-style: solid; 
+	border-width: 1px;
+	border-color: white white white white;
+	max-width: 80%;
+	margin-left:auto;
+	margin-right: auto;
+	background-image:url(imagenes/mapa.png); 
+	width: 100%; height: 69%;
+	background-repeat: no-repeat;"
+}
+
+
+/*seccion de preguntas frecuentres */
+
+#pregunta1{
+	margin-top: 45px !important;
+}
+
+#pregunta1,#pregunta2, #pregunta3, #pregunta4, #pregunta5, #pregunta6, #pregunta7{
+	margin-left: auto;
+	margin-right: auto;
+	width: 950px;
+	height: 68px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #738082 transparent #738082 transparent;
+	line-height: 68px;
+}
+
+
+#pregunta1 p, #pregunta2 p, #pregunta3 p, #pregunta4 p, #pregunta5 p, #pregunta6 p, #pregunta7 p{
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 20px;
+	position: absolute;
+	color: white;
+	margin: 0px;
+
+}
+
+.imagenPregunta{
+	float: right;
+	cursor: pointer;
+	margin-top: 12px;
+	height: 33px;
+}
+
+
+#textoPregunta{
+	float:left;
+}
+
+#respuesta1, #respuesta2, #respuesta3, #respuesta4, #respuesta5, #respuesta6, #respuesta7 {
+	margin-left: auto;
+	margin-right: auto;
+	width: 950px;
+	height: 122px;
+	border-style: solid;
+	border-width: 2px;
+	border-color: transparent transparent #2C2F34 transparent;
+	line-height: 39px;
+	display: none;
+}
+
+#respuesta1 p, #respuesta2 p, #respuesta3 p, #respuesta4 p,#respuesta5 p, #respuesta6 p, #respuesta7 p {
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 19px;
+	color: #808082;
+	line-height: 148%;
+
+}
+
+
+
+
+
+
+
+
+
