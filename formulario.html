@@ -4,12 +4,15 @@
 	<meta charset="UTF-8">
 	<title>Prohibido Olvidar</title>
 	<link rel="stylesheet" href="css/style-diego.css">
+	<link rel="stylesheet" href="css/modal.css">
 	<link rel="stylesheet" media="screen" type="text/css" href="css/datepicker.css" />
 	<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 	<script type="text/javascript" src="js/datepicker.js"></script>
 	<script type="text/javascript" src="js/script-diego.js" ></script>
+	<script type="text/javascript" src="js/despliegueDeContenedorNicolas.js" ></script>
+	<script src="http://js.arcgis.com/3.11/"></script>
 </head>
-<body>
+<body onload="abrirFormulario()">
 	<div id="banner">
 		<div id="background">
 			<div id="imagen_banner">
@@ -71,7 +74,7 @@
 			<p class="textos" style="float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;color:#4c637f !important;text-align: left; width: 17px;">*</p><p class="textos" style="float:left">Por favor, escriba el nombre de la víctima:</p>
 			</div>
 
-			<input type="text" class="textos"placeholder="    Nombre Completo" onfocus="this.placeholder = ''"style="margin-left: 17px;color: #adacb2;width:382px;width: 382px;background-color: rgba(255,255,255,0.2);height: 30px;border: 1px solid;border-color: #4c637f;">
+			<input type="text" class="textos"  id="nombreVictima" placeholder="    Nombre Completo" onfocus="this.placeholder = ''"style="margin-left: 17px;color: #adacb2;width:382px;width: 382px;background-color: rgba(255,255,255,0.2);height: 30px;border: 1px solid;border-color: #4c637f;">
 			<p class="textos" style="margin-left:17px;color:#5189B6 !important; float:left">Por favor, escriba el nombre completo de la víctima:</p>
 
 			<div style="margin-top: 54px;width: 100%;height: 41px;">
@@ -81,9 +84,9 @@
 			
 			<div class="textos" style="margin-left: 15px; margin-top:3px;">
 				<input type="checkbox" id="c1" name="cc" />
-				<label for="c1"><span></span>Hombre</label>
+				<label for="c1"><span id="hombre"></span>Hombre</label>
 				<input type="checkbox" id="c2" name="cc" />
-				<label for="c2"><span></span>Mujer</label>
+				<label for="c2"><span id="mujer"></span>Mujer</label>
 			</div>
 
 			<p class="textos" style="margin-top: 5px; margin-left:17px;color:#5189B6 !important; float:left">Por favor elija un género</p>
@@ -92,20 +95,16 @@
 				<p class="textos" style="margin-bottom: 0px;float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;color:#4c637f !important;text-align: left; width: 17px;">*</p>
 				<p class="textos" style="margin-bottom: 0px;float:left">Elija el departamento donde ocurrieron los hechos violentos:</p>
 			</div>
-			<select class="textos selectFormulario" style="width: 383px;height: 33px;margin-left: 17px;margin-top: 10px;">
-				<option value="" disabled selected>    Departamento</option>
-				<option value="" >Cundinamarca</option>
-				<option value="" >Huila</option>
-				<option value="" >Valle del cauca</option>
-			</select>
-			<p class="textos" style="margin-top: 14px; margin-left:17px;color:#5189B6 !important; float:left">Por favor elija un departamento</p>
-			<p class="textos" style="margin-bottom: 0px;float:left;margin-left:17px;">Elija la ciudad o el municipio donde ocurrieron los hechos violentos:</p>
-			<select class="textos selectFormulario" style="width: 383px;height: 33px;margin-left: 17px;margin-top: 20px;">
-				<option value="" disabled selected>Municipios</option>
-				<option value="" >Neiva</option>
-				<option value="" >Nataga</option>
-				<option value="" >Rivera</option>
-			</select>
+			<select class="textos selectFormulario" id="departamentos" style="width: 383px;height: 33px;margin-left: 17px;margin-top: 10px;" onchange="cargarMunicipios()">
+                <option value="" disabled selected>    Departamento</option>
+                
+            </select>
+            <p class="textos" style="margin-top: 14px; margin-left:17px;color:#5189B6 !important; float:left">Por favor elija un departamento</p>
+            <p class="textos" style="margin-bottom: 0px;float:left;margin-left:17px;">Elija la ciudad o el municipio donde ocurrieron los hechos violentos:</p>
+            <select class="textos selectFormulario" id="municipios" style="width: 383px;height: 33px;margin-left: 17px;margin-top: 20px;" onchange="agregarSegundoEspacio()">
+                <option value="" disabled selected>Municipios</option>
+                
+            </select>
 			<p class="textos" style="margin-top:40px;margin-left:17px; margin-bottom: 0px;float:left">Díganos la edad que tenía la víctima en ese momento:</p>
 			<div style="width: 120px; height: 33px; margin-left:17px;margin-top:80px;">
 				<select class="textos selectFormulario" style="width: 118px;height: 33px;" >
@@ -138,9 +137,69 @@
 				<div class="boton_formulario" style="cursor:pointer; float: left;width: 182px;height: 40px;line-height: 40px;text-align: center;border: 2px solid;border-color: #4c637f;margin-right: 23px;" >
 					<p class="textos" style="margin:0px;">CANCELAR</p>
 				</div>
-				<div class="boton_formulario" style="cursor:pointer; float: left;width: 182px;height: 40px;line-height: 40px;text-align: center;border: 2px solid;border-color: #4c637f;">
-					<p class="textos" style="margin:0px;" onclick="mostrar()">IR AL PASO 2</p>
+				<div class="boton_formulario" id="PasoDos" style="cursor:pointer; float: left;width: 182px;height: 40px;line-height: 40px;text-align: center;border: 2px solid;border-color: #4c637f; background-color: rgb(62, 99, 128);">
+					<a href="#titulo" style=" text-decoration:none;"><p class="textos" style="margin:0px;" id="irPasoDos">IR AL PASO 2</p></a>
 				</div>
+			</div>
+		</div>
+		<div id="formularioDos">
+
+			<div style="margin-top: 25px;">
+			<p class="textos" style="float:left">Díganos la profesión de la víctima en el momento<br> del acto violento:</p>
+			</div>
+
+			<input type="text" class="textos"  id="nombreVictima" placeholder="    Profesión" onfocus="this.placeholder = ''"style="color: #adacb2;width:427px;background-color: rgba(255,255,255,0.2);height: 30px;border: 1px solid;border-color: white;">
+
+			<div style="margin-top: 25px;width: 100%;height: 41px;">
+				<p class="textos" style="margin-bottom: 0px;float:left">Si quiere, descríbanos brevemente el hecho violento:</p>
+			</div>
+			<div class="textos" style="margin-left: 15px; margin-top:5px;">
+				<textarea class="textos" name="mensaje" cols="50" rows="15" placeholder="    En poca palabras cuéntenos más sobre el hecho" onfocus="this.placeholder = ''" style="margin-left: -15px;color: #adacb2;width:427px;background-color: rgba(255,255,255,0.2);height: 151px;border: 1px solid;border-color: white;"></textarea>
+			</div>
+			<p class="textoInferior">La hisotria será revisada y verificada antes de su publicación</p>
+
+
+			<div style="margin-top: 20px;width: 100%;height: 41px;">
+				<p class="textos" style="margin-bottom: 0px;float:left">Suba una foto  de la víctima o de un objeto que<br> represente esta historia violenta:</p>
+			</div>
+			<div id="contenedorCargarfoto">
+			<input type="text" class="textos"  id="foto" placeholder="    Fotografía o imagen" onfocus="this.placeholder = ''"style="float:left;color: #adacb2;width:324px;background-color: rgba(255,255,255,0.2);height: 32px;border: 1px solid;border-color: white; ">
+			<div class="botonExaminar">
+		        <input type="file" id="examinar" name="botonExaminar"/>
+		    </div>
+		    </div>
+			
+			<div style="margin-top: 120px; width: 400px;height: 44px;">
+				<div class="boton_formulario" style="cursor:pointer; float: left;width: 182px;height: 40px;line-height: 40px;text-align: center;border: 2px solid;border-color: white;margin-right: 10px;" >
+					<p class="textos" style="margin:0px;">CANCELAR</p>
+				</div>
+				<div class="boton_formulario" id="cargarPunto" style="cursor:pointer; float: left;width: 200px;height: 40px;line-height: 40px;text-align: center;border: 2px solid;border-color: #4c637f; background-color: rgb(62, 99, 128);">
+					<a href="#openModal" style=" text-decoration:none;"><p class="textos" style="margin:0px;" id="irPasoDos">PUBLICAR MI HISTORIA</p></a>
+				</div>
+			</div>
+			<div id="openModal" class="modalDialog">
+				<div  ALIGN=center>
+					<a href="#close" title="Close" class="close"><img src="imagenes/cerrar_calendario.png"></a>
+					<p class="tituloModal">¡MUCHAS GRACIAS POR CONTARNOS ESTA HISTORIA!</p>
+					<p class="segundoRenglon">¡Ahora la historia de otro de los sobrevivientes de la esta cruel guerra <br> podrá ser vista por toda un nación!</p>
+					<p class="final">Esta historia será evaluanda y pronto publicada</p>
+					<a href="rostros.html" title="irRostrosx" class="irRostros"><p align="center">IR A LOS ROSTROS</p></a>
+
+				</div>
+			</div>
+		</div>
+		<div class="fotosAleatorias">
+			<div class="textoFotosAleatorias">
+				<p ALIGN=center>ESTAS SON LAS<br> FOTOGRAFÍAS QUE SE<br> HAN PUBLICADO EN<br> OTRAS HISTORIAS:</p>
+			</div>
+			<div class="imagenUno">
+				<img src="imagenes/victimaUno.png">
+			</div>
+			<div class="imagenDos">
+				<img src="imagenes/victimaDos.png">
+			</div>
+			<div class="imagenTres">
+				<img src="imagenes/victimaTres.png">
 			</div>
 		</div>
 	</div>

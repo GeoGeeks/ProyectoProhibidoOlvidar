@@ -1,0 +1,81 @@
+.modalDialog {
+	position: fixed;
+	font-family: Arial, Helvetica, sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(28,28,30,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 808px;
+	height: 329px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	background: rgba(5, 5, 5, 0.8);
+
+}
+
+.close {
+	background: #3E6380;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	right: 20px;
+	text-align: center;
+	top: 22px;
+	width: 37px;
+	height: 37px;	
+	text-decoration: none;
+	font-size: 29px;
+	font-family: AvenirNextLTPro_Regular;
+	
+}
+
+
+
+.tituloModal{
+	color: white;
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 28px;
+	margin-top: 7%;
+}
+.segundoRenglon{
+	color: rgb(159, 159, 159);
+	font-size: 18px;
+	font-family: AvenirNextLTPro_Regular;
+	margin-top: 5%;
+}
+.final{
+	color: white;
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 18px;
+	margin-top: 3%;
+}
+
+.irRostros {
+	background: #3E6380;
+	color: #FFFFFF;
+	line-height: 25px;
+	position: absolute;
+	text-align: center;
+	top: 255px;
+	width: 227px;
+	text-decoration: none;
+	font-size: 18px;
+	font-family: AvenirNextLTPro_Regular;
+	right: 312px;
+	
+}
