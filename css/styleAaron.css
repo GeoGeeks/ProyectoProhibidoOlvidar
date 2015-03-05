@@ -267,15 +267,20 @@ option{
 	position: absolute;
 	width: 150px;
 	height: 150px;
-	background-color: black;
+	background-image:url('../imagenes/rostros/filtro.png');
+}
+.fondoRostro{
+	position: absolute;
+	width: 150px;
+	height: 150px;
+	background-color: red;
 }
 .nombreRostro{
 	position: absolute;
-	background-color: transparent;
+	background-image:url('../imagenes/rostros/recuadro_nombre.png');
 	width: 150px;
 	height: 42px;
 	bottom: 0;
-	border-style: solid;
 	border-width: 1px;
 	border-top-color: white;
 	color: white;
