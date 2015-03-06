@@ -7,11 +7,10 @@ html, body{
 #banner{
 	width: 100%;
 	height: 80px;
-	background-image: url("../imagenes/fondo_inicio_1.png");
+	background-image: url("../imagenes/barra_menu.png");
 	background-size: 100% 100%;
 }
 #background{
-	background-image: url("../imagenes/fondo_inicio_2.png");
 	width: 100%;
 	height: 100%
 }
@@ -74,11 +73,23 @@ html, body{
 	font-family: AvenirNextLTPro_Regular;
 	font-size: 17px;
 }
-#formulario{
+#formulario, #formularioDos{
 	width: 566px;
 	height: 995px;
-	margin-left: 413px;
 	margin-right: auto;
+	float: left;
+}
+ 
+#formulario{
+	margin-left: 413px;
+} 
+
+#formularioDos{
+	margin-left: 281px;
+} 
+
+#formularioDos, .fotosAleatorias{
+	display: none;
 }
 .selectFormulario{
 	background-image: url('../imagenes/arrow_down.png'), -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2) 40%, rgba(255, 255, 255, 0.2));
@@ -86,10 +97,16 @@ html, body{
 	background-position: 100% center;
 	background-repeat: no-repeat;
 	border: 1px solid;
-	border-color: #4c637f;
 	-webkit-appearance: button;
 	cursor: pointer;
 	padding: 0 0 0 13px;
+}
+#municipios{
+	border-color: white;
+}
+
+#departamentos{
+	border-color: #4c637f;
 }
 .boton_formulario:active {
     background-color: #4c637f;
@@ -154,6 +171,130 @@ input[type="checkbox"] + label span {
 input[type="checkbox"]:checked + label span {
     background:url(../imagenes/radio.png) left top no-repeat;
 }
+/* Estilos del mapa  */
+.cluster {
+background: #C1EFFF;
+border-radius: 50%;
+text-align: center;
+color: black;
+font-weight: 15px;
+font-family: monospace;
+}
+
+.cluster:before {
+ content: ' ';
+ position: absolute;
+ border-radius: 50%;
+ z-index: -1;
+ top: 1px;
+ left: 1px;
+ right: 1px;
+ bottom: 1px;
+}
+
+.digits-1 {
+font-size: 14px;
+height: 28px;
+width: 28px;
+line-height: 28px;
+margin-top: -14px;
+margin-left: -14px;
+}
+
+.digits-2 {
+font-size: 16px;
+height: 46px;
+width: 46px;
+line-height: 46px;
+margin-top: -17px;
+margin-left: -17px;
+}
+
+.digits-2:before {
+border-width: 2px;
+}
+
+.digits-3 {
+font-size: 18px;
+height: 68px;
+width: 68px;
+line-height: 68px;
+border-width: 3px;
+margin-top: -24px;
+margin-left: -24px;
+}
+
+.digits-3:before {
+border-width: 3px;
+}
+
+.digits-4 {
+font-size: 18px;
+height: 82px;
+width: 82px;
+line-height: 82px;
+border-width: 4px;
+margin-top: -29px;
+margin-left: -29px;
+}
+
+.digits-4:before {
+border-width: 4px;
+}
+.body-mapa{
+	width: 100% !important;
+	height: 770px !important;
+}
+#mapa{
+	width: 1130px !important;
+	height: 535px !important;
+}
+.leaflet-bar a, .leaflet-control-layers-toggle{
+	font-size: 0px !important;
+	border-radius: 0px !important;
+	width: 44px !important;
+	height: 45px !important;
+}
+.leaflet-control-zoom-in{
+	background-image: url('../imagenes/zoom_mas.png') !important;
+	background-color: transparent !important;
+}
+.leaflet-control-zoom-out{
+	background-image: url('../imagenes/zoom_menos.png') !important;
+	background-color: transparent !important;
+}
+.leaflet-control-zoom-in:active{
+	background-image: url('../imagenes/zoom_mas_select.png') !important;
+}
+.leaflet-control-zoom-out:active{
+	background-image: url('../imagenes/zoom_menos_select.png') !important;
+}
+.leaflet-left .leaflet-control{
+	margin-left: 32px !important;
+}
+.leaflet-top .leaflet-control{
+	margin-top: 30px !important;
+}
+#cargandoFiltrosMapa{
+	display: none;
+	left: 10%;
+	top: 154px;
+	max-width: 80%;
+	left: 10%;
+	width: 1130px !important;
+	height: 535px !important;
+	position: absolute;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 1001;
+}
+#imagenCargandoFiltrosMapa{
+	width: 110px;
+	position: absolute;
+	left: 43%;
+	top: 41%;
+}
+
+ /*  Fin del mapa  */
 @font-face {
    font-family: AvenirNextLTPro_Bold;
    src: url(../font/AvenirNextLTPro-Bold.otf);
@@ -221,4 +362,52 @@ input[type="checkbox"]:checked + label span {
 @font-face {
    font-family: AvenirNextLTPro_UltLtCnIt;
    src: url(../font/AvenirNextLTPro-UltLtCnIt.otf);
+}
+/* Formulario Dos */
+
+.textoInferior{
+	font-family: AvenirNextLTPro_Regular;
+	color: rgb(200, 201, 203);
+	margin-top: -1px;
+	font-size: 13px;
+}
+div.botonExaminar {
+    width: 100px;
+    height: 36px;
+    background-image: url("../imagenes/botonExaminar.png");
+    overflow: hidden;
+    background-repeat: no-repeat;
+    float:left;
+}
+
+div.botonExaminar input {
+    display: block !important;
+    width: 100px !important;
+    height: 36px !important;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+#contenedorCargarfoto{
+	margin-top: 30px;
+}
+
+.textoFotosAleatorias{
+
+}
+.textoFotosAleatorias p{
+	color: white;
+	font-family: AvenirNextLTPro_Regular;
+	font-size: 18px;
+}
+.fotosAleatorias{
+	width: 258px;
+	height: 624px;
+	background: rgba(51,54,59,0.8);
+	float: left;
+	margin-top: 50px;
+}
+
+.imagenUno img, .imagenDos img, .imagenTres img{
+	margin-left: 61px;
+	margin-bottom: 15px;
 }

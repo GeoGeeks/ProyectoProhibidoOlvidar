@@ -274,7 +274,7 @@ function cerrar(){
 function abrirFormulario(){
     
   
-  cargarDeptos();
+ /* cargarDeptos();
   $("#cargarArchivo").change(function() {
     foto=true;
     activarEnvio();
@@ -285,7 +285,7 @@ function abrirFormulario(){
   });
   $('#Nombre').keyup(function () {
     activarEnvio();
-  });
+  });*/
 }
 
 function activarEnvio(){
