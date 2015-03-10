@@ -18,11 +18,14 @@ function inicialFormulario(){
 	});
 }
 function inicialMapa(){
-	var map = L.map('mapa').setView([ 4.283532, -73.352951], 5);
+	var map = L.map('mapa',{
+		minZoom : 5,
+		maxZoom : 12
+	}).setView([ 4.283532, -73.352951], 5);
   	console.log(L, L.esri);
   	//L.esri.basemapLayer('http://54.187.22.10:6080/arcgis/rest/services/Prohibido_olvidar/MAPABASE/MapServer').addTo(map);
   	L.esri.tiledMapLayer("http://54.187.22.10:6080/arcgis/rest/services/Prohibido_olvidar/MAPABASE/MapServer", {}).addTo(map);
-  	//L.esri.basemapLayer('DarkGrayLabels').addTo(map);
+  	//L.esri.basemapLayer('DarkGray').addTo(map);
   	/*L.esri.featureLayer('http://54.187.22.10:6080/arcgis/rest/services/TESIS/Tesis/MapServer/0',{
   		style: function (feature) {
 	        return {opacity: 1,fillColor: '#1E1C21', color: '#62A1B3', weight: 1.5, fillOpacity: 1};
@@ -63,7 +66,7 @@ function inicialMapa(){
 		return L.Util.template('<strong>Nombre:{Nombre}</strong><br><strong>Edad:{Edad}</strong><br><strong>Grupo:{Grupo_Armado}</strong>', feature.properties);
 	});
   	capaPuntosMapa.on('clusterclick', function (a) {
-    console.log("Hola");
+    console.log("Hola",a.layer.getAllChildMarkers());
     return false;
 });
 }

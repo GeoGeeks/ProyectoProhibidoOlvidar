@@ -1,5 +1,8 @@
 
 $(document).ready(function(){
+  $("#cancelarUno").click(function(){
+    window.location ="mapa.html";
+  });
     $("#flechaDespliegue1").click(function(){
     	if($('#respuesta1').css('display') == 'none'){
     		$('#flechaDespliegue1').attr('src','imagenes/arrow_up_preguntasFrecuentes.png');
