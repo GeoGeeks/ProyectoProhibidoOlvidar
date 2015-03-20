@@ -185,7 +185,7 @@ option{
 }
 #filtroRostros{
 	position: relative;
-	width: 790px;
+	width: 471px;
 	height: 39px;
 	margin-left: auto;
 	margin-right: auto;
@@ -288,6 +288,7 @@ option{
 	font-size: 14px;
 	text-align: center;
 	line-height: 42px;
+	background-size: 100% 100%;
 
 }
 #rostrosDudas{
@@ -331,4 +332,32 @@ option{
 	margin-top: 15px;
 	width: 68px;
 	height: auto;
+}
+
+#popUpRostro{
+                display: none;
+                z-index: 1001;
+                width: 100%;
+                height: 100%;
+                position: fixed;
+                margin-top: -123px;
+                background-color: rgba(10,10,10,0.8);
+}
+#detallesPopUpRostro{
+                background-color: rgba(0,0,0,0.8);
+                width: 730px;
+                position: relative;
+                height: 210px;
+                margin-left: auto;
+                margin-right: auto;
+                top: 50%;
+                transform: translateY(-50%);
+}
+.sinResultado{
+	font-size: 30px;
+	text-align: center;
+	color: white;
+	font-family: AvenirNextLTPro_Regular;
+	margin-left: 264px;
+	margin-top: 150px;
 }

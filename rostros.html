@@ -9,6 +9,7 @@
 	<meta name="Title" content="Titulo de la página">
 	<script src="http://js.arcgis.com/3.12/"></script>
 	<script type="text/javascript" src="js/cargarDatos.js"></script>
+	<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 </head>
 <body>
 		
@@ -70,6 +71,56 @@
 		</div>
 	</div>
 	<div id="body">
+
+
+
+
+
+
+		
+
+	<div id="popUpRostro">
+		<div id="detallesPopUpRostro">
+           <div style="width: 153px;height: 153px;padding-top: 30px;padding-left: 30px;  float: left; position:realtive;">
+              <img src="imagenes/rostros/filtro.png" style="position: absolute;width: 153px;">
+              <img id="imagenDetallePopUpRostro"src="imagenes/victimaTres.png" style="width: 100%;height: 100%; opacity: 0.25;">
+           </div>	
+           <div style="padding-left: 16px;padding-top: 30px;float: left;width: 513px;  		height: 153px;">
+              <div style="width: 100%;height: 40px;">
+	              <img src="imagenes/nombre_popup.png" style="position:absolute;">
+                  <div class="textos" id="nombreDetallePopUpRostro" style="  font-size: 28px;width:435px; height:40px;line-height: 40px;color:white;float: left;  padding-left: 20px;"></div>
+                      <img id="cerrarPopUpRostro" onclick="cerrarPopupRostro();" src="imagenes/cerrarpopup.png" style="float:right;  margin-top: -2px;">
+                  </div>
+                  <div style="width: 100%;height: 113px;">
+                      <div style="height: 100%;width: 160px;float: left;">
+	                      <p  class="textos" id="generoDetallesPopUpRostro" style="margin-bottom: 0px;"></p>
+                          <p  class="textos" id="edadDetallesPopUpRostro" style="margin-bottom: 0px;margin-top: 10px;"></p>
+                          <p  class="textos" id="profesionDetallesPopUpRostro" style="margin-bottom: 0px;margin-top: 10px;"></p>
+                      </div>
+                      <div style="height: 100%;width: 353px;float: right;">
+                          <p  class="textos" id="lugarDetallesPopUpRostro" style="margin-bottom: 0px;color: gray;"></p>
+                          <p  class="textos" id="fechaDetallesPopUpRostro" style="margin-bottom: 0px;margin-top: 10px;color: gray;"></p>
+	                  </div>
+                  </div>
+               </div>
+               <div id="caracteristicas" style="background-color: rgba(0,0,0,0.8);width: 730px;position: relative;height:0;margin-left: auto;margin-right: auto;top: 11%;transform: translateY(-50%);">
+	                  	<fieldset style="width: 88%;margin-right: auto;margin-left: auto;">
+	  						<legend class="textos"> <p style="margin-left:15px; margin-right:15px;">DESCRIPCIÓN DEL HECHO</p></legend>
+	  							<p  class="textos" id="caracteristicasDetallesPopUpRostro" style="margin-bottom: 0px;margin-top: 10px;color: gray;"></p>
+	 					</fieldset>
+				</div>
+           </div>
+		           
+       </div>
+
+
+
+
+
+
+
+
+
 		<div id="tituloRostros">
 			<h1>LOS ROSTROS</h1>
 		</div>
@@ -81,35 +132,58 @@
 				<p>Filtrar por: </p>
 			</div>
 			<div id="filtroEdad">
-				<select style="padding: 0 0 0 61px !important;top: -4px;">
-				  <option value="volvo">EDAD</option>
-				  <option value="saab">15 - 30</option>
-				  <option value="opel">30-60</option>
-				  <option value="audi">MÁS DE 60</option>
+				<select style="padding: 0 0 0 61px !important;top: -4px;" id="Edad">
+				  <option value="edad">EDAD</option>
+				  <option value="0-4">0 - 4</option>
+				  <option value="5-11">5-11</option>
+				  <option value="12-25">12-25</option>
+				  <option value="26-40">26-40</option>
+				  <option value="41-64">41-64</option>
+				  <option value="65">MÁS DE 65</option>
 				</select>
 			</div>
 			<div id="filtroGenero">
-				<select style="top: -4px;">
-				  <option value="volvo">GENERO</option>
-				  <option value="saab">FEMENINO</option>
-				  <option value="opel">MASCULINO</option>
+				<select style="top: -4px;" id="Genero">
+				  <option value="genero">GENERO</option>
+				  <option value="fem">FEMENINO</option>
+				  <option value="mas">MASCULINO</option>
 				</select>
 			</div>
-			<div id="filtroGrupo">
-				<select style="top: -4px;width: 315px;">
-				  <option value="volvo" style="text-align:center">GRUPO DEL QUE FUE VÍCTIMA</option>
-				  <option value="saab" style="text-align:center">FARC</option>
-				  <option value="opel">ELN</option>
-				</select>
-			</div>	
+				
 		</div>
-		<div id="rostrosParteAbajo">
+		<div id="rostrosParteAbajo" style="float:left;">
 			<div id="rostrosGaleria"></div>
 			<div id="rostrosDudas">
 				<p>Si tiene alguna duda o si desea despublicar una historia, escribanos a <a href="mailto:oscloz@eltiempo.com?Subject=Hello%20again" target="_top">oscloz@eltiempo.com</a> </p>
+				<p id="paginacion" style="text-align:right;"></p>
 				
 			</div>	
 		</div>
+		<div style="width: 112px;float: left;margin-top: 119px;">
+			<div id="anterior" style="color:white;float:left;cursor: pointer;">Anterior</div>
+			<div id="posicion" style="float:left;margin-left: 30px;"><img src="imagenes/sin_seleccion.png"></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
+			<div id="uno" style="color:white;float:left;cursor: pointer;" >1990-1995</div>
+			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
+			<div id="dos" style="color:white;float:left;cursor: pointer;" >1996-2000</div>
+			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
+			<div id="tres" style="color:white;float:left;cursor: pointer;" >2001-2005</div>
+			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
+			<div id="cuatro" style="color:white;float:left;cursor: pointer;" >2006-2010</div>
+			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
+			<div id="cinco" style="color:white;float:left;cursor: pointer;" >2011-2014</div>
+			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
+			<div id="actualidad" style="color:white;float:left;cursor: pointer;">Actualidad</div>
+			<div id="posicion" style="float:left;margin-left: 15px;  margin-top: -3px;"><img src="imagenes/sin_seleccion.png"></div>
+
+
+
+	</div>
 	</div>
 	<div id="footer">
 		
