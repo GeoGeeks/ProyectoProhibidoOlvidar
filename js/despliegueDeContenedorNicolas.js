@@ -1,8 +1,16 @@
 
 $(document).ready(function(){
+  
   $("#cancelarUno").click(function(){
     window.location ="mapa.html";
   });
+
+  $("#cancelarDos").click(function(){
+     $('#formularioDos').css('display', 'none'); 
+     $('.fotosAleatorias').css('display', 'none');
+     $('#formulario').css('display', 'block'); 
+  });
+ 
     $("#flechaDespliegue1").click(function(){
     	if($('#respuesta1').css('display') == 'none'){
     		$('#flechaDespliegue1').attr('src','imagenes/arrow_up_preguntasFrecuentes.png');
@@ -147,7 +155,7 @@ $( document ).ready(function() {
       number, parser, dom, registry,FeatureLayer, Point, SimpleMarkerSymbol, Color,Graphic
     ) {
       var departamentos = 0;
-      var genero = 0;
+      var genero = -1;
 
       $("#irPasoDos").click(function(){
           var alertaUno = "Por favor diligenciar los siguientes campos:\n ";
@@ -158,7 +166,7 @@ $( document ).ready(function() {
           if(departamentos < 1){
                 alertaDos = alertaDos + "\n -Departamento";
           }
-          if(genero < 1){
+          if(genero < 0){
              alertaDos = alertaDos + "\n -Genero";
           }
           
@@ -172,9 +180,10 @@ $( document ).ready(function() {
           }
       });
 
+       
 
       $("#hombre").click(function(){
-          genero = 1;
+          genero = 0;
           $('#mujer').css('background', 'url(imagenes/radio.png) -28px top no-repeat');
           $('#hombre').css('background', 'url(imagenes/radio.png) left top no-repeat');
 
@@ -188,6 +197,11 @@ $( document ).ready(function() {
       $("#departamentos").change(function() {
           departamentos = 1;
       });
+   
+      $("#publicar").click(function(){
+         locate();
+      });
+
       parser.parse();
       locator = new Locator("http://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer");
       locator.on("address-to-locations-complete", agregarPunto);
@@ -195,7 +209,7 @@ $( document ).ready(function() {
       // listen for button click then geocode
       //registry.byId("locate").on("click", locate);
 
-      var featureLayer = new FeatureLayer("http://services.arcgis.com/8DAUcrpQcpyLMznu/arcgis/rest/services/Prohibido_Olvidar/FeatureServer/0",{
+      var featureLayer = new FeatureLayer("http://services.arcgis.com/8DAUcrpQcpyLMznu/ArcGIS/rest/services/ProhibidoOlvidar/FeatureServer/0",{
           mode: FeatureLayer.MODE_ONDEMAND,
           outFields: ["*"]
         });
@@ -233,7 +247,14 @@ $( document ).ready(function() {
           var sms = new SimpleMarkerSymbol().setStyle(
             SimpleMarkerSymbol.STYLE_SQUARE).setColor(
             new Color([255,0,0,0.5]));
-          var attr = {"Nombre":$("#Nombre").val()};
+          var attr = {"Nombre":$("#nombreVictima").val(), 
+                      "Genero":genero,
+                      "cod_dane":$("#departamentos").val(),
+                      "Edad":$("#edad").val(),
+                      "Fecha_Evento":'1988/05/25',
+                      "Profesión":$("#profesion").val(),
+                      "Descripción":$("#descripcion").val(),
+                      "Validado":0};
           var graphic = new Graphic(pt,sms,attr);
           featureLayer.applyEdits([graphic]);
           return false; //break out of loop after one candidate with score greater  than 80 is found.
@@ -249,74 +270,10 @@ $( document ).ready(function() {
     }
     function callback(result){  
       console.log(result);  
-     } 
+     }
     });
 });
-function cerrar(){
-    var parteInferior,logo;
-    logo=$("#logoInicial");
-    parteInferior=$("#parteInferior");
-    
-    $("#parteSuperior").animate({
-        height:'hide'
-    });
-    parteInferior.animate({
-        top:'100%'
-    });
-    parteInferior.animate({
-        height:'hide'
-    });
-    logo.animate({
-        left:'100%'
-    });
-    logo.animate({
-        height:'hide'
-    });
-}
 
-function abrirFormulario(){
-    
-  
- /* cargarDeptos();
-  $("#cargarArchivo").change(function() {
-    foto=true;
-    activarEnvio();
-  });
-  $("#municipios").change(function() {
-    municipio=true;
-    activarEnvio();
-  });
-  $('#Nombre').keyup(function () {
-    activarEnvio();
-  });*/
-}
-
-function activarEnvio(){
-  var nombre = $("#Nombre").val();
-  if(municipio && foto && nombre.length>0){
-    $("#no_enviar").hide();
-    $("#enviar").show();
-  }
-}
-
-function faltanDatos(){
-  alert("Por favor ingrese todos los campos obligatorios");
-}
-
-function enviarDatos(){
-  $("#locate").click();
-}
-
-function cargarArchivo(){
-  $("#cargarArchivo").click();
-}
-function agregarSegundoEspacio(){
-    var segundaParte = $("#segundosDatos");
-    if(segundaParte.css('display') == 'none')
-        segundaParte.animate({
-            height:'toggle'
-        });
-}
 
 function cargarDeptos(){
       require([
@@ -334,10 +291,10 @@ function cargarDeptos(){
           cargarDatos();
 
           function cargarDatos(){
-            myFeatureLayer = new QueryTask("http://54.187.22.10:6080/arcgis/rest/services/TESIS/Tesis/MapServer/0");
+            myFeatureLayer = new QueryTask("http://services.arcgis.com/8DAUcrpQcpyLMznu/arcgis/rest/services/Division_Departamental_Colombia/FeatureServer/0");
             var query = new Query();
             query.returnGeometry = false;
-            query.outFields = ["DEPARTAMENTO","COD_DEPARTAMENTO"];
+            query.outFields = ["DEPTO","COD_DEPTO"];
             query.where = "1=1";
             departamentos = myFeatureLayer.execute(query);
             departamentos.then(showResults);
@@ -345,9 +302,14 @@ function cargarDeptos(){
           }
 
           function showResults(results) {
+            var bogota = results.features[4].attributes;
+            $("#departamentos").html($("#departamentos").html()+"<option value=\""+bogota.COD_DEPTO+"\">"+bogota.DEPTO+"</option>");
+
             for(var i=0;i<results.features.length;i++){
               var datos = results.features[i].attributes;
-              $("#departamentos").html($("#departamentos").html()+"<option value=\""+datos.COD_DEPARTAMENTO+"\">"+datos.DEPARTAMENTO+"</option>");
+              if(datos.DEPTO != "BOGOTÁ D.C."){
+                $("#departamentos").html($("#departamentos").html()+"<option value=\""+datos.COD_DEPTO+"\">"+datos.DEPTO+"</option>");
+              }
             }
           }          
         });
