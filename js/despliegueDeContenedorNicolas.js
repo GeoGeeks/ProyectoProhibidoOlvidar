@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
   
   $("#cancelarUno").click(function(){
@@ -8,7 +7,8 @@ $(document).ready(function(){
   $("#cancelarDos").click(function(){
      $('#formularioDos').css('display', 'none'); 
      $('.fotosAleatorias').css('display', 'none');
-     $('#formulario').css('display', 'block'); 
+     $('#formulario').css('display', 'block');
+     $("#body").css('height', '1248px');
   });
  
     $("#flechaDespliegue1").click(function(){
@@ -123,9 +123,6 @@ $(document).ready(function(){
             height: 'toggle'
         });         
     });
-
-  
-
     
     document.getElementById("examinar").onchange = function () {
         document.getElementById("foto").value = this.value;
@@ -158,8 +155,10 @@ $( document ).ready(function() {
       var genero = -1;
 
       $("#irPasoDos").click(function(){
+      //    var fecha = ($('#dia').val()+"/"+$('#mes').val()+"/"+$('#ano').val());
           var alertaUno = "Por favor diligenciar los siguientes campos:\n ";
           var alertaDos = "";
+          var dia = $('#dia').val(), mes = $('#mes').val(), ano = $('#ano').val();
           if($("#nombreVictima").val().length < 1){
               alertaDos = "-Nombre de la victima \n ";  
           }
@@ -169,6 +168,20 @@ $( document ).ready(function() {
           if(genero < 0){
              alertaDos = alertaDos + "\n -Genero";
           }
+
+          if(dia != "" || mes != "" || ano != ""){
+            if(dia == "" || mes == "" || ano == ""){
+              alertaDos += "\n -Faltan campos en la fecha ingresada";
+            }else{
+              var fecha = dia + "/"+ mes +"/"+ano;
+              console.log(fecha);
+              if(existeFecha(fecha)){
+                if(!validarFechaMenorActual(fecha))
+                  alertaDos += "\n -Por favor seleccione una fecha menor a la actual";
+              }else
+                alertaDos += "\n -La fecha ingresada no existe";
+            }
+          }
           
           if(alertaDos.length > 1){
             alert(alertaUno + " " + alertaDos);
@@ -176,20 +189,46 @@ $( document ).ready(function() {
             //locate();
              $('#formulario').css('display', 'none');  
              $('#formularioDos').css('display', 'block'); 
-             $('.fotosAleatorias').css('display', 'block'); 
+             $('.fotosAleatorias').css('display', 'block');
+             $("#formularioDos").css('height', '816px');
+             $("#body").css('height', '997px');
           }
       });
+
+      function validarFechaMenorActual(date){
+            var x=new Date();
+            var fecha = date.split("/");
+            x.setFullYear(fecha[2],fecha[1]-1,fecha[0]);
+            var today = new Date();
+       
+            if (x >= today)
+              return false;
+            else
+              return true;
+      }
+
+      function existeFecha(fecha){
+        var fechaf = fecha.split("/");
+        var day = fechaf[0];
+        var month = fechaf[1];
+        var year = fechaf[2];
+        var date = new Date(year,month,'0');
+        if((day-0)>(date.getDate()-0)){
+              return false;
+        }
+        return true;
+      }
 
        
 
       $("#hombre").click(function(){
-          genero = 0;
+          genero = 1;
           $('#mujer').css('background', 'url(imagenes/radio.png) -28px top no-repeat');
           $('#hombre').css('background', 'url(imagenes/radio.png) left top no-repeat');
 
       });
         $("#mujer").click(function(){
-          genero = 1;
+          genero = 2;
           $('#hombre').css('background', 'url(imagenes/radio.png) -28px top no-repeat');
           $('#mujer').css('background', 'url(imagenes/radio.png) left top no-repeat');
       });
@@ -209,14 +248,13 @@ $( document ).ready(function() {
       // listen for button click then geocode
       //registry.byId("locate").on("click", locate);
 
-      var featureLayer = new FeatureLayer("http://services.arcgis.com/8DAUcrpQcpyLMznu/ArcGIS/rest/services/ProhibidoOlvidar/FeatureServer/0",{
+      var featureLayer = new FeatureLayer("http://services.arcgis.com/8DAUcrpQcpyLMznu/arcgis/rest/services/Reporte_Prohibido_Olvidar/FeatureServer/0",{
           mode: FeatureLayer.MODE_ONDEMAND,
           outFields: ["*"]
         });
       featureLayer.on("edits-complete", agregarImagen);
       //map.infoWindow.resize(200,125);  
     function locate() {
-      alert("entro");
      // map.graphics.clear();
       var address = {
         "SingleLine": $("#municipios option:selected").text()+", "+$("#departamentos option:selected").text()+", Colombia"
@@ -225,13 +263,10 @@ $( document ).ready(function() {
         address: address,
         outFields: ["Loc_name"]
       };
-      alert("va a entrar");
       locator.addressToLocations(options);
     }
 
     function agregarPunto(evt) {
-    alert("si esta entrando");
-    
       var geom;
       arrayUtils.every(evt.addresses, function(candidate) {
         console.log(candidate.score);
@@ -247,14 +282,25 @@ $( document ).ready(function() {
           var sms = new SimpleMarkerSymbol().setStyle(
             SimpleMarkerSymbol.STYLE_SQUARE).setColor(
             new Color([255,0,0,0.5]));
+          var select = document.getElementById("departamentos");
+          var nombre = select.options[select.selectedIndex].innerHTML;
+          var lugar = nombre;
+          if($("#municipios").val()!=""){
+            select = document.getElementById("municipios");
+            nombre = select.options[select.selectedIndex].innerHTML;
+            lugar +=","+nombre;
+          }
+          console.log("lugar:"+lugar);
           var attr = {"Nombre":$("#nombreVictima").val(), 
                       "Genero":genero,
                       "cod_dane":$("#departamentos").val(),
                       "Edad":$("#edad").val(),
                       "Fecha_Evento":'1988/05/25',
-                      "Profesión":$("#profesion").val(),
-                      "Descripción":$("#descripcion").val(),
+                      "Profesion":$("#profesion").val(),
+                      "Descripcion":$("#descripcion").val(),
+                      "Lugar":lugar,
                       "Validado":0};
+          console.log("attr",attr);
           var graphic = new Graphic(pt,sms,attr);
           featureLayer.applyEdits([graphic]);
           return false; //break out of loop after one candidate with score greater  than 80 is found.

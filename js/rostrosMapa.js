@@ -1,4 +1,4 @@
-var servicio = "http://services.arcgis.com/8DAUcrpQcpyLMznu/arcgis/rest/services/Reporte_Prohibido_Olvidar/FeatureServer/0";
+var servicio = "http://services.arcgis.com/8DAUcrpQcpyLMznu/ArcGIS/rest/services/Reporte_Prohibido_Olvidar/FeatureServer/0";
 var arrayURL = [];
 var cont = 1;
 var pagina = 1;
@@ -10,9 +10,9 @@ var consultaRango = "1=1";
 var filtroEdadMenor = "1=1";
 var filtroEdadMayor = "1=1";
 var filtroGenero = "1=1";
+var filtroMapa = "Validado = 1";
 var meses = [];
 meses[0]="Enero";meses[1]="Febrero";meses[2]="Marzo";meses[3]="Abril";meses[4]="Mayo";meses[5]="Junio";meses[6]="Julio";meses[7]="Agosto";meses[8]="Septiembre";meses[9]="Octubre";meses[10]="Noviembre";meses[11]="Diciembre";
-
 
 require([
         "esri/layers/FeatureLayer",
@@ -26,8 +26,6 @@ require([
           ready(function(){
 
             var MyFeatureLayer;
-            
-            paginacion();
 
             $("#anterior").click(function(){
                 anterior();
@@ -50,10 +48,52 @@ require([
             $("#actualidad").click(function(){
                 actualidad();
             });
+            inicial();
+            /* consulta linea de tiempo rango de años 1990 a 1995 */
+            function inicial(){
+              $("#tituloMapaRostros").html(getUrlParameter('tit').toUpperCase());
+              var depto = getUrlParameter('depto');
+              if(depto!=0){
+                filtroMapa = "cod_dane = "+depto;
+              }else{
+                var ids = getUrlParameter('ids');
+                var id = ids.split(',');
+                var consultaIds = "";
+                for (var i = 0; i < id.length; i++) {
+                  if(i<id.length-1){
+                    consultaIds += "OBJECTID = "+id[i]+" OR ";
+                  }else{
+                    consultaIds += "OBJECTID = "+id[i];
+                  }
+                }
+                filtroMapa = consultaIds;
+              }
+              myFeatureLayer = new QueryTask(servicio);
+              var query = new Query();
+              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero +' AND Validado = 1 AND ('+ filtroMapa +')';//+" AND "
+              Ids = myFeatureLayer.executeForIds(query);
+              Ids.then(totalIds);
+              document.getElementById("paginacion").innerHTML="";
+              
+            }
+
+            function getUrlParameter(sParam){
+                var sPageURL = window.location.search.substring(1);
+                var sURLVariables = sPageURL.split('&');
+                for (var i = 0; i < sURLVariables.length; i++) 
+                {
+                    var sParameterName = sURLVariables[i].split('=');
+                    if (sParameterName[0] == sParam) 
+                    {
+                        return sParameterName[1];
+                    }
+                }
+                return 0;
+            }      
 
             
 
-            function CreandoDiv(results){
+            function CreandoDiv(results){ 
               var marginleft = 0;
               var marginTop = 0;
               var imagen;
@@ -73,20 +113,12 @@ require([
                   imagenDIV.id = "rostros";
                   imagenDIV.name = datos.OBJECTID;
                   imagenDIV.onclick = function(){
-
-                    var palabra = $("#nombre"+this.name+"").html();
-                    var nombreImprimir;
-                    if (palabra.length <= 18) {
-                      nombreImprimir = palabra;
-                    }
-                    else{
-                      nombreImprimir = palabra.substring(0, 25);
-                    }
-                    document.getElementById("nombreDetallePopUpRostro").innerHTML = nombreImprimir.toUpperCase();
+                    document.getElementById("nombreDetallePopUpRostro").innerHTML = ($("#nombre"+this.name+"").html()).toUpperCase();
                     document.getElementById("popUpRostro").style.display = "block";
                     document.getElementById("imagenDetallePopUpRostro").src = $("#imagen"+this.name+"").html();
                     var sexo = $("#sexo"+this.name+"").html();
                     var edad = $("#edad"+this.name+"").html();
+                    console.log("edad" , $("#edad"+this.name+"").html());
                     var NumFecha = $("#fecha"+this.name+"").html();
                     if (NumFecha== "null") {
                       document.getElementById("fechaDetallesPopUpRostro").innerHTML ="Fecha: Sin Información";
@@ -113,12 +145,14 @@ require([
                       document.getElementById("generoDetallesPopUpRostro").innerHTML = "Sin Información";
                     }
                     var profesion = $("#profesion"+this.name+"").html();
+                    //console.log("Profesión", $("#profesion"+this.name+"").html());
                     if (profesion == "null") {
                       document.getElementById("profesionDetallesPopUpRostro").innerHTML = "Sin Información";
                     }
                     else{
                       document.getElementById("profesionDetallesPopUpRostro").innerHTML = $("#profesion"+this.name+"").html();
                     }
+                    console.log("descripcion", $("#descripcion"+this.name+"").html());
                     if (($("#descripcion"+this.name+"").html() == "null") || ($("#descripcion"+this.name+"").html() == "")) {
                       document.getElementById("caracteristicas").style.display = "none";
                       document.getElementById("detallesPopUpRostro").style.height = "210px"
@@ -133,15 +167,7 @@ require([
                 };
                 imagenDIV.className = "rostro";
                 imagenDIV.style.margin = marginTop+"px 0 0 "+marginleft+"px";
-                var palabra = datos.Nombre;
-                  var nombreImprimir;
-                    if (palabra.length <= 18) {
-                      nombreImprimir = palabra;
-                    }
-                    else{
-                      nombreImprimir = palabra.substring(0, 18);
-                    }
-                imagenDIV.innerHTML += "<img height='150' width='150' style='opacity:0.25' src="+imagen+"><div id='rostroImagen' class='nombreRostro'>"+nombreImprimir+"<p style='display:none' id='nombre"+datos.OBJECTID+"'>"+datos.Nombre+"</p><p style='display:none' id='imagen"+datos.OBJECTID+"'>"+imagen+"</p><p style='display:none' id='edad"+datos.OBJECTID+"'>"+datos.Edad+"</p><p style='display:none' id='fecha"+datos.OBJECTID+"'>"+datos.Fecha_Evento+"</p><p style='display:none' id='sexo"+datos.OBJECTID+"'>"+datos.Genero+"</p><p style='display:none' id='profesion"+datos.OBJECTID+"'>"+datos.Profesion+"</p><p style='display:none' id='descripcion"+datos.OBJECTID+"'>"+datos.Descripcion+"</p></div>";
+                imagenDIV.innerHTML += "<img height='150' width='150' style='opacity:0.25' src="+imagen+"><div id='rostroImagen' class='nombreRostro'>"+datos.Nombre+"<p style='display:none' id='nombre"+datos.OBJECTID+"'>"+datos.Nombre+"</p><p style='display:none' id='imagen"+datos.OBJECTID+"'>"+imagen+"</p><p style='display:none' id='edad"+datos.OBJECTID+"'>"+datos.Edad+"</p><p style='display:none' id='fecha"+datos.OBJECTID+"'>"+datos.Fecha_Evento+"</p><p style='display:none' id='sexo"+datos.OBJECTID+"'>"+datos.Genero+"</p><p style='display:none' id='profesion"+datos.OBJECTID+"'>"+datos.Profesion+"</p><p style='display:none' id='descripcion"+datos.OBJECTID+"'>"+datos.Descripcion+"</p></div>";
                 
                 rostro.appendChild(imagenDIV);
                 if((i+1)%6 != 0){
@@ -321,7 +347,7 @@ require([
               filtroGenero = "1=1";
               myFeatureLayer = new QueryTask(servicio);
               var query = new Query();
-              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero+' AND Validado = 1';//+" AND "
+              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero +' AND  Validado = 1 AND ('+ filtroMapa +')';
               query.orderByFields = ["OBJECTID DESC"];
               Ids = myFeatureLayer.executeForIds(query);
               Ids.then(totalIds);
@@ -338,7 +364,7 @@ require([
               filtroGenero = "1=1";
               myFeatureLayer = new QueryTask(servicio);
               var query = new Query();
-              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero+' AND Validado = 1';//+" AND "
+              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero +' AND  Validado = 1 AND ('+ filtroMapa +')';
               query.orderByFields = ["OBJECTID DESC"];
               Ids = myFeatureLayer.executeForIds(query);
               Ids.then(totalIds);
@@ -355,7 +381,7 @@ require([
               filtroGenero = "1=1";
               myFeatureLayer = new QueryTask(servicio);
               var query = new Query();
-              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero+' AND Validado = 1';//+" AND "
+              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero +' AND  Validado = 1 AND ('+ filtroMapa +')';
               query.orderByFields = ["OBJECTID DESC"];
               Ids = myFeatureLayer.executeForIds(query);
               Ids.then(totalIds);
@@ -372,7 +398,7 @@ require([
               filtroGenero = "1=1";
               myFeatureLayer = new QueryTask(servicio);
               var query = new Query();
-              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero+' AND Validado = 1';//+" AND "
+              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero +' AND  Validado = 1 AND ('+ filtroMapa +')';
               query.orderByFields = ["OBJECTID DESC"];
               Ids = myFeatureLayer.executeForIds(query);
               Ids.then(totalIds);
@@ -389,7 +415,7 @@ require([
               filtroGenero = "1=1";
               myFeatureLayer = new QueryTask(servicio);
               var query = new Query();
-              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero+' AND Validado = 1';//+" AND "
+              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero +' AND  Validado = 1 AND ('+ filtroMapa +')';
               query.orderByFields = ["OBJECTID DESC"];
               Ids = myFeatureLayer.executeForIds(query);
               Ids.then(totalIds);
@@ -406,33 +432,35 @@ require([
               filtroGenero = "1=1";
               myFeatureLayer = new QueryTask(servicio);
               var query = new Query();
-              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero+' AND Validado = 1';//+" AND "
+              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero+' AND  Validado = 1 AND ('+ filtroMapa +')';
               query.orderByFields = ["OBJECTID DESC"];
               Ids = myFeatureLayer.executeForIds(query);
               Ids.then(totalIds);
               document.getElementById("paginacion").innerHTML="";
               
-
             }
 
              /* consulta linea de tiempo rango de años 2015 en adelante */
             function actualidad(){
               var paginas;
+              var select = $('#Edad');
+              select.val($('option:first', select).val());
+              var select = $('#Genero');
+              select.val($('option:first', select).val());
               consultaRango = "Fecha_Evento>'2015'";
               filtroEdadMenor = "1=1";
               filtroEdadMayor = "1=1";
               filtroGenero = "1=1";
               myFeatureLayer = new QueryTask(servicio);
               var query = new Query();
-              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero+' AND Validado = 1';//+" AND "
+              query.where = consultaRango+' AND '+filtroEdadMenor+' AND '+filtroEdadMayor+' AND '+filtroGenero +' AND  Validado = 1 AND ('+ filtroMapa +')';
+              console.log("consulta", query.where);
               query.orderByFields = ["OBJECTID DESC"];
               Ids = myFeatureLayer.executeForIds(query);
               Ids.then(totalIds);
               document.getElementById("paginacion").innerHTML="";
               
             }
-
-
 
             function totalIds(results){
               var nuevaPagina;
@@ -484,6 +512,9 @@ require([
 
           })
       });
+function volverMapa(){
+  window.location = "mapa.html";
+}
 function cerrarPopupRostro(){
-              document.getElementById("popUpRostro").style.display= "none";
-            }
+  document.getElementById("popUpRostro").style.display= "none";
+}

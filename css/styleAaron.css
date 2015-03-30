@@ -268,6 +268,7 @@ option{
 	width: 150px;
 	height: 150px;
 	background-image:url('../imagenes/rostros/filtro.png');
+	cursor: pointer;
 }
 .fondoRostro{
 	position: absolute;
@@ -360,4 +361,10 @@ option{
 	font-family: AvenirNextLTPro_Regular;
 	margin-left: 264px;
 	margin-top: 150px;
+}
+#rostros:hover{
+	background-image: none;
+}
+#rostros:hover #rostroImagen{
+	display: none;
 }

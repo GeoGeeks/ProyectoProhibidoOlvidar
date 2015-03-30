@@ -1,4 +1,4 @@
-var servicio = "http://services.arcgis.com/8DAUcrpQcpyLMznu/arcgis/rest/services/ProhibidoOlvidar/FeatureServer/0";
+var servicio = "http://services.arcgis.com/8DAUcrpQcpyLMznu/ArcGIS/rest/services/Reporte_Prohibido_Olvidar/FeatureServer/0";
 var totalArrays=[];
 var arrayURL=[];
 var featureLayer;
@@ -26,10 +26,10 @@ require([
           	}
           	function llenarImagenes(param, results){
           		var IDimagen = "imagen";
-          		var random = Math.floor((Math.random() * (results.length)) + 1);					
+          		var random = Math.floor((Math.random() * (results.length)) + 0);					
           		featureLayer.queryAttachmentInfos(results[random], function (infos) {
+                    results.splice(random, 1);
           					if (infos.length>0) {
-          						results.splice(random, 1);
           						IDimagen += param+1;
           						document.getElementById(IDimagen).innerHTML= "<img  height='150' width='150' style='opacity:0.25' src="+infos[0].url+">"
           						//console.log("valor para el ID",IDimagen);
@@ -40,7 +40,8 @@ require([
           							llenarImagenes(param, results);
           					}
           					else{
-          						llenarImagenes(param, results);
+                      if(results.length>0)
+          						  llenarImagenes(param, results);
           					}
 
           				});
