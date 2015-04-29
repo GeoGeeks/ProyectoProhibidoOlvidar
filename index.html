@@ -4,25 +4,83 @@
 	<meta charset="UTF-8">
 	<title>Prohibido Olvidar</title>
 	<link rel="stylesheet" href="css/styleAaron.css">
+	<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+	<script type="text/javascript" src="js/script-diego.js"></script>
 </head>
 <body style="height: auto;">
 	<div id="banner" style="background-image: none !important;">
-		
+		<div id="creditos" style="opacity:0;display:none;width: 100%;height: 100%;background-color: rgba(0,0,0,0.6);position: fixed;z-index: 1;">
+			<div id="textosCreditos" style="width: 780px;height: 380px;background-color: rgba(0,0,0,0.85);position: absolute;top: 15%;left: 22%;">
+				<div id="tituloCreditos" style="width: 100%;height: 90px;">
+					<p style="color: white;font-family: AvenirNextLTPro_Regular;font-size: 27px;margin-left: 323px;float: left;">CRÉDITOS</p>
+					<img alt="Cerrar los créditos" src="imagenes/cerrar_calendario.png" style="float: right;margin: 27px;" onclick="cerrarCreditos()">
+				</div>
+				<div id="personasCreditos" style="font-size: 17px;text-align: center;font-family: AvenirNextLTPro_Regular; width: 732px; height: 100px; margin-left: auto; margin-right: auto;">
+					<div style="width: 80px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: white; float: left;">El Tiempo</p>
+					</div>
+					<div style="width: 504px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Director&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">William Calderón&nbsp;&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Gerente creativo&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Sandra Merino</p>
+					</div>
+					<div style="width: 580px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de diseño&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Isaac Pérez&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de experiencia de usuario&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Luisa Pinto</p>
+					</div>
+					<div style="width: 718px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñador experiencia de usuario&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Jorge Sanabria&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñador visual senior&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Oscar Lozada</p>
+					</div>
+					<div style="width: 640px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñadores visuales junior&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Andrea Rodriguez&nbsp;/&nbsp;Melissa Castaño&nbsp;/&nbsp;Steven Gallego</p>
+					</div>
+					<div style="width: 115px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: white; float: left;">Esri Colombia</p>
+					</div>
+					<div style="width: 350px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Coordinador del proyecto&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Fernando Benitez</p>
+					</div>
+					<div style="width: 515px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de Diseño&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Angie Rodríguez&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Temático SIG&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Andrés Nossa</p>
+					</div>
+					<div style="width: 538px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Equipo de desarrollo&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Diego Triviño&nbsp;/&nbsp;Aarón Ramirez&nbsp;/&nbsp;Nicolás Cantor</p>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	<div id="body" style="height:657px;">
 		<div id="imagenPrincipal">
-			<img src="imagenes/index/principal.png">
+			<img src="imagenes/index/principal.png" alt="Logo de la aplicación">
 		</div>
 		<div id="textoPrincipal">
-			<p>En este especial se pretende consytuir de manera colectiva la memoria de un país golpeado por la violencia desde hace mas de 50 años sin tomar ningun partido, sin hacer parte de ningun bando. Y es precisamente en la colectividad en donde se encuentra el valor de lo neutral, es la sitacion de no participación en una guerra por parte de un país. Las relaciones entre los países neutrales y beligerantes están regalamentadas.</p>
-			<p id="firmaPrincipal">- William Calderon</p> 
+			<p>“Prohibido Olvidar” es un proyecto de El Tiempo Casa Editorial, con el apoyo de Esri Colombia, que busca aportar a la reconciliación de los colombianos y al proceso de superación del conflicto armado.</BR>Lo que usted tiene frente a sus ojos es la herramienta más poderosa para hacer oír su voz, para reconstruir su propia memoria histórica del conflicto armado y dignificar a las víctimas.</BR>Más de medio siglo de violencia en Colombia ha dejado un país marcado por el dolor, pero también por historias de superación, tenacidad, dignidad y perdón.  Queremos conocer su historia.
+			</p>
 		</div>
 		<div id="botonPrincipal">
-			<a href="rostros.html"><img src="imagenes/index/boton.png"></a>
+			<a href="rostros.html"><img src="imagenes/index/boton.png" style="border: 0;" alt="Inicio de la aplicación"></a>
 		</div>
 	</div>
 	<div id="footer">
-		
+		<img src="imagenes/copyright.png" id="copyFooter" alt="Copyright de la aplicación">
+		<img src="imagenes/creditos_boton.png" id="creditosBotonFooter" alt="Creditos de la aplicación" onclick="mostrarCreditos()">		
 	</div>
 </body>
 </html>

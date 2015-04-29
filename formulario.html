@@ -15,47 +15,122 @@
 	
 </head>
 <body onload="inicialFormulario()">
+	<div id="cargandoMunicipios">
+		<img src="imagenes/cargando.gif" id="imagenCargando" alt="Cargando">
+	</div>
 	<div id="banner">
 		<div id="backgroundPopUp" style="width:100%;height:100%; position:fixed;">
 			<div style="width:470px;height:410px;margin-top: 400px;background-color: rgba(0,0,0,0.7);margin-left: auto;margin-right: auto;margin-top: 10%;">
-				<img src="imagenes/cerrar_calendario.png" onclick="cerraCalendario()" style="margin-left: 364px;margin-top: 25px;">
+				<img alt="Cerrar PopUp del calendario" src="imagenes/cerrar_calendario.png" onclick="cerraCalendario()" style="margin-left: 364px;margin-top: 25px;">
 				<p id="date" style="margin-left:auto;margin-right:auto;width: 340px !important;height: 340px !important;margin-top: 0px;"></p>
+			</div>
+		</div>
+		<div id="banner">
+		<div id="creditos" style="opacity:0;display:none;width: 100%;height: 100%;background-color: rgba(0,0,0,0.6);position: fixed;z-index: 1;">
+			<div id="textosCreditos" style="width: 780px;height: 465px;background-color: rgba(0,0,0,0.85);position: absolute;top: 10%;left: 22%;">
+				<div id="tituloCreditos" style="width: 100%;height: 90px;">
+					<p style="color: white;font-family: AvenirNextLTPro_Regular;font-size: 27px;margin-left: 323px;float: left;">CRÉDITOS</p>
+					<img alt="Cerrar los créditos" src="imagenes/cerrar_calendario.png" style="float: right;margin: 27px;" onclick="cerrarCreditos()">
+				</div>
+				<div id="personasCreditos" style="font-size: 17px;text-align: center;font-family: AvenirNextLTPro_Regular; width: 732px; height: 100px; margin-left: auto; margin-right: auto;">
+					<div style="width: 80px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: white; float: left;">El Tiempo</p>
+					</div>
+					<div style="width: 504px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Director&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">William Calderón&nbsp;&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Gerente creativo&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Sandra Merino</p>
+					</div>
+					<div style="width: 580px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de diseño&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Isaac Pérez&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de experiencia de usuario&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Luisa Pinto</p>
+					</div>
+					<div style="width: 718px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñador experiencia de usuario&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Jorge Sanabria&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñador visual senior&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Oscar Lozada</p>
+					</div>
+					<div style="width: 640px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñadores visuales junior&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Andrea Rodriguez&nbsp;/&nbsp;Melissa Castaño&nbsp;/&nbsp;Steven Gallego</p>
+					</div>
+					<div style="width: 115px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: white; float: left;">Esri Colombia</p>
+					</div>
+					<div style="width: 350px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Coordinador del proyecto&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Fernando Benitez</p>
+					</div>
+					<div style="width: 515px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de Diseño&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Angie Rodríguez&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Temático SIG&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Andrés Nossa</p>
+					</div>
+					<div style="width: 538px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Equipo de desarrollo&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Diego Triviño&nbsp;/&nbsp;Aarón Ramirez&nbsp;/&nbsp;Nicolás Cantor</p>
+					</div>
+					<div style="width: 725px; margin-left: auto; margin-right: auto;height: 30px;">
+						<br>
+						<p style="margin: 0;  font-size: 16px; color: rgb(102,102,102); float: left;">Este trabajo hace parte del proyecto de grado de la Maestría de Periodismo y Comunicación Digital Cohorte II, de la Universidad de la Sabana, de William Calderón. Dirección de tesis, Julián Enrique Penagos.</p>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div id="background">
 			<div id="imagen_banner">
-				<img src="imagenes/logo_banner.png">
+				<a href="index.html" style=" text-decoration:none;">
+					<img alt="Logo banner de la aplicación" src="imagenes/logo_banner.png" style="border: 0;" onclick="">
+				</a>
 			</div>
 			<div id="botones_compartir">
 				<div style="width:100%; height:22px;background-image:url('imagenes/rectangulo_texto_banner.png');line-height: 22px;text-align: center;">
 					<p class="textos" style="font-size: 12px;margin: 0px;">Compartir este especial:</p>
 				</div>
 				<div style="width:100%; height:58px;">
-					<a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://localhost/ProhibidoOlvidar/rostros.html&amp;p[images][0]=http://logicum.co/wp-content/uploads/2013/01/sharetweetbuttons.jpg&amp;p[title]=probando+&amp;p[summary]=Build your custom share buttons from normal images with examples on each button" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
-						<div style="cursor:pointer;width:95px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;">
-							<img src="imagenes/facebook_banner.png">
+					<a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://geoapps.esri.co/prohibidoOlvidar/&amp;p[images][0]=http://logicum.co/wp-content/uploads/2013/01/sharetweetbuttons.jpg&amp;p[title]=probando+&amp;p[summary]=Build your custom share buttons from normal images with examples on each button" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
+						<div id="facebook_boton" style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;">
+							<img alt="Compartir en facebook" src="imagenes/facebook_banner.png" style="border: 0;">
 						</div>
 					</a>
-					<a onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="http://twitter.com/home?status=Comparta%20http://localhost/ProhibidoOlvidar/rostros.html">
-						<div style="cursor:pointer;width:95px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
-							<img src="imagenes/twitter_banner.png">
+					<a onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="http://twitter.com/home?status=Comparta%20http://geoapps.esri.co/prohibidoOlvidar/">
+						<div id="twitter_boton" style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
+							<img alt="Compartir en Twitter" src="imagenes/twitter_banner.png" style="border: 0;">
 						</div>
 					</a>
-				</div>
+					<a>
+						<a id="googlePlus" href="https://plus.google.com/share?url=http://geoapps.esri.co/prohibidoOlvidar/" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" style="display:none;">
+  							<img  src="https://www.gstatic.com/images/icons/gplus-16.png" alt="Compartelo en Google+"/>
+  						</a>
+						<div id="google_boton" style="cursor:pointer;width:64px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;" onclick="compartirGoogle();">
+							<img alt="Compartir en google plus" src="imagenes/google_banner.png">
+						</div>
+					</a>
+				</div> 
 			</div>
 			<div id="botones_menu">
 				<div id="div_botones_menu" style="width:800px; height:100%;margin-left: auto;margin-right: auto;">
 					<div id="boton_rostros" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<a href="rostros.html" style=" text-decoration:none;"><p class="textos" style="font-size: 16px;margin:0px;">LOS ROSTROS</p></a>
+						<a href="rostros.html" style=" text-decoration:none;"><p class="textos" style="font-size: 15px;margin:0px;">LOS ROSTROS</p></a>
 					</div>
 					<div id="boton_mapa" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<a href="mapa.html" style=" text-decoration:none;"><p class="textos" style="font-size: 16px;margin:0px;">MAPA</p></a>
+						<a href="mapa.html#inicio" style=" text-decoration:none;"><p class="textos" style="font-size: 15px;margin:0px;">MAPA</p></a>
 					</div>
 					<div id="boton_formulario" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<p class="textos" style="text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);height: 52px;border-bottom: 2px white;border-bottom-style: solid;font-size: 16px;margin:0px;">CUÉNTENOS SU HISTORIA</p>
+						<p class="textos" style="text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);height: 52px;border-bottom: 2px white;border-bottom-style: solid;font-size: 15px;margin:0px;">CUÉNTENOS SU HISTORIA</p>
 					</div>
 					<div id="boton_preguntas" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<a href="preguntasFrecuentes.html" style=" text-decoration:none;"><p class="textos" style="font-size: 16px;margin:0px;">PREGUNTAS FRECUENTES</p></a>
+						<a href="preguntasFrecuentes.html" style=" text-decoration:none;"><p class="textos" style="font-size: 15px;margin:0px;">PREGUNTAS FRECUENTES</p></a>
 					</div>					
 				</div>
 			</div>
@@ -73,14 +148,14 @@
 			<div style="margin-top: 27px;height: 52px;">
 			<p class="textos" style="float: left;margin-left: 17px;margin-right: 4px;">Los campos con</p><p class="textos" style="float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;margin-right: 4px;color:#4c637f !important;">*</p><p class="textos" style="float: left;"> son obligatorios</p></div>
 
-			<div style="margin-top: 2px;">
-			<p class="textos" style="float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;color:#4c637f !important;text-align: left; width: 17px;">*</p><p class="textos" style="float:left">Por favor, escriba el nombre de la víctima:</p>
+			<div style="margin-top: 2px;" >
+			<p class="textos" style="float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;color:#4c637f !important;text-align: left; width: 17px;">*</p><p class="textos" style="float:left">Por favor, escriba los nombres y apellidos de la víctima:</p>
 			</div>
 
-			<input type="text" class="textos"  id="nombreVictima" placeholder="    Nombre Completo" onfocus="this.placeholder = ''"style="margin-left: 17px;color: #adacb2;width:382px;width: 382px;background-color: rgba(255,255,255,0.2);height: 30px;border: 1px solid;border-color: #4c637f;">
-			<p class="textos" style="margin-left:17px;color:#5189B6 !important; float:left">Por favor, escriba el nombre completo de la víctima:</p>
+			<input type="text" class="textos"  id="nombreVictima" placeholder="    Nombres y Apellidos" onfocus="this.placeholder = ''"style="margin-left: 17px;color: #adacb2;width:365px;background-color: rgba(255,255,255,0.2);height: 30px;border: 1px solid;border-color: #FFFFFF;  padding-left: 15px;">
+			<p class="textos" id="nombreObligatorio" style="display:none; margin-left:17px;color:#5189B6 !important; float:left">Por favor, escriba el nombre completo de la víctima:</p>
 
-			<div style="margin-top: 54px;width: 100%;height: 41px;">
+			<div id="contenedorGenero" style="margin-top: 18px;width: 100%;height: 41px;">
 				<p class="textos" style="margin-bottom: 0px;float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;color:#4c637f !important;text-align: left; width: 17px;">*</p>
 				<p class="textos" style="margin-bottom: 0px;float:left">Género:</p>
 			</div>
@@ -90,21 +165,23 @@
 				<label for="c1"><span id="hombre"></span>Hombre</label>
 				<input type="checkbox" id="c2" name="cc" />
 				<label for="c2"><span id="mujer"></span>Mujer</label>
+				<input type="checkbox" id="c3" name="cc" />
+				<label for="c3"><span id="lgbti"></span>LGBTI</label>
 			</div>
 
-			<p class="textos" style="margin-top: 5px; margin-left:17px;color:#5189B6 !important; float:left">Por favor elija un género</p>
+			<p class="textos" id="generoObligatorio" style="display:none;margin-top: 5px; margin-left:17px;color:#5189B6 !important; float:left">Por favor elija un género</p>
 
-			<div style="margin-top: 45px;width: 100%;height: 41px;">
+			<div id="contenedorDepto" style="margin-top: 15px;width: 100%;height: 41px;">
 				<p class="textos" style="margin-bottom: 0px;float: left;font-size: 23px;margin-bottom: 0px;margin-top: 10px;color:#4c637f !important;text-align: left; width: 17px;">*</p>
-				<p class="textos" style="margin-bottom: 0px;float:left">Elija el departamento donde ocurrieron los hechos violentos:</p>
+				<p class="textos"  style="margin-bottom: 0px;float:left">Elija el departamento donde ocurrieron los hechos violentos:</p>
 			</div>
 			<select class="textos selectFormulario" id="departamentos" style="width: 383px;height: 33px;margin-left: 17px;margin-top: 10px;" onchange="cargarMunicipios()">
                 <option value="" disabled selected>    Departamento</option>               
             </select>
-            <p class="textos" style="margin-top: 14px; margin-left:17px;color:#5189B6 !important; float:left">Por favor elija un departamento</p>
+            <p class="textos" id="deptoObligatorio" style="display:none;margin-top: 14px; margin-left:17px;color:#5189B6 !important; float:left">Por favor elija un departamento</p>
             <p class="textos" style="margin-bottom: 0px;float:left;margin-left:17px;">Elija la ciudad o el municipio donde ocurrieron los hechos violentos:</p>
             <select class="textos selectFormulario" id="municipios" style="width: 383px;height: 33px;margin-left: 17px;margin-top: 20px;">
-                <option value="" disabled selected>Municipios</option>
+                <option value="" disabled selected>Ciudades y municipios</option>
                 
             </select>
 			<p class="textos" style="margin-top:40px;margin-left:17px; margin-bottom: 0px;float:left">Díganos la edad que tenía la víctima en ese momento:</p>
@@ -113,7 +190,7 @@
 				<option value="" >Edad</option>
 				</select>
 			</div>
-			<p class="textos" style="margin-top:40px;margin-left:17px; margin-bottom: 0px;float:left;">Denos la fecha exacta o aproximada del hecho violento:</p>
+			<p id="denosFecha" class="textos" style="margin-top:40px;margin-left:17px; margin-bottom: 0px;float:left;">Denos la fecha exacta o aproximada del hecho violento:</p>
 			<div style="margin-top: 63px; margin-left: 17px;width: 549px;height: 52px;margin-top: 80px;">
 				<select class="textos selectFormulario" id="dia" style="width: 118px;height: 33px;margin-right: 12px;float: left;" >
 				<option value="" >Día</option>
@@ -127,15 +204,28 @@
 				<option value="" >Año</option>
 				
 				</select>
-				<img src="imagenes/calendario.png" style="height: 36px;margin-top: -3px;float: left;cursor:pointer;" onclick="verCalendario()">
+				<img src="imagenes/calendario.png" alt="Abrir el calendario" style="height: 36px;margin-top: -3px;float: left;cursor:pointer;" onclick="verCalendario()">
 			</div>
+
+			<p class="textos" id="fechaIncorrecta" style="display:none;margin-top: 14px; margin-left:17px;color:#5189B6 !important; float:left"></p>
+
+			<p class="textos" style="margin-top:20px;margin-left:17px; margin-bottom: 0px;float:left">Díganos el grupo armado que cometió el hecho violento:</p>
+			<select id="selectGrupoArmado" class="textos selectFormulario" style="width: 250px;height: 33px;margin-left: 17px;margin-top: 17px;">
+				<option value="" disabled="" selected="">Grupo Armado</option>
+				<option value="4">BACRIM</option>
+				<option value="2">ELN</option>
+				<option value="1">FARC</option>
+				<option value="5">Fuerzas Armadas</option>
+				<option value="3">Paramilitares</option>
+				<option value="6">Otros</option>
+			</select>
 		
 			<div style="margin-top: 52px;margin-left: 63px;width: 396px;height: 44px;">
 				<div class="boton_formulario" id="cancelarUno" style="cursor:pointer; float: left;width: 182px;height: 40px;line-height: 40px;text-align: center;border: 2px solid;border-color: #4c637f;margin-right: 23px;" >
 					<p class="textos" style="margin:0px;">CANCELAR</p>
 				</div>
 				<div class="boton_formulario" id="PasoDos" style="cursor:pointer; float: left;width: 182px;height: 40px;line-height: 40px;text-align: center;border: 2px solid;border-color: #4c637f; background-color: rgb(62, 99, 128);">
-					<a href="#titulo" style=" text-decoration:none;"><p class="textos" style="margin:0px;" id="irPasoDos">IR AL PASO 2</p></a>
+					<a id="verificarCampos" href="#titulo" style=" text-decoration:none;"><p class="textos" style="margin:0px;" id="irPasoDos">IR AL PASO 2</p></a>
 				</div>
 			</div>
 		</div>
@@ -145,13 +235,13 @@
 			<p class="textos" style="float:left">Díganos la profesión de la víctima en el momento<br> del acto violento:</p>
 			</div>
 
-			<input type="text" class="textos"  id="profesion" placeholder="    Profesión" onfocus="this.placeholder = ''"style="color: #adacb2;width:427px;background-color: rgba(255,255,255,0.2);height: 30px;border: 1px solid;border-color: white;">
+			<input type="text" class="textos"  id="profesion" placeholder="Profesión" onfocus="this.placeholder = ''"style="color: #adacb2;width: 412px;background-color: rgba(255,255,255,0.2);height: 30px;border: 1px solid;border-color: white;padding-left: 19px;">
 
 			<div style="margin-top: 25px;width: 100%;height: 41px;">
 				<p class="textos" style="margin-bottom: 0px;float:left">Si quiere, descríbanos brevemente el hecho violento:</p>
 			</div>
 			<div class="textos" style="margin-left: 15px; margin-top:5px;">
-				<textarea class="textos" id="descripcion" name="mensaje" cols="50" rows="15" placeholder="    En poca palabras cuéntenos más sobre el hecho" onfocus="this.placeholder = ''" style="margin-left: -15px;color: #adacb2;width:427px;background-color: rgba(255,255,255,0.2);height: 151px;border: 1px solid;border-color: white;"></textarea>
+				<textarea class="textos" id="descripcion" name="mensaje" cols="50" rows="15" placeholder="En poca palabras cuéntenos más sobre el hecho" onfocus="this.placeholder = ''" style="margin-left: -15px;color: #adacb2;width: 410px;background-color: rgba(255,255,255,0.2);height: 151px;border: 1px solid;border-color: white;padding-left: 19px;"></textarea>
 			</div>
 			<p class="textoInferior">La historia será revisada y verificada antes de su publicación</p>
 
@@ -160,7 +250,7 @@
 				<p class="textos" style="margin-bottom: 0px;float:left">Suba una foto  de la víctima o de un objeto que<br> represente esta historia violenta:</p>
 			</div>
 			<div id="contenedorCargarfoto">
-			<input type="text" class="textos"  id="foto" placeholder="    Fotografía o imagen" onfocus="this.placeholder = ''"style="float:left;color: #adacb2;width:324px;background-color: rgba(255,255,255,0.2);height: 32px;border: 1px solid;border-color: white; "> 
+			<input type="text" class="textos"  id="foto" placeholder="Fotografía o imagen" onfocus="this.placeholder = ''"style="float:left;color: #adacb2;width: 312px;background-color: rgba(255,255,255,0.2);height: 32px;border: 1px solid;border-color: white;padding-left: 19px;"> 
 			<div class="botonExaminar">
 				<form id="archivo" >
 		        <input type="file" id="examinar" name="botonExaminar"/>
@@ -178,7 +268,7 @@
 			</div>
 			<div id="openModal" class="modalDialog">
 				<div  ALIGN=center>
-					<a href="formulario.html" title="Close" class="close"><img src="imagenes/cerrar_calendario.png"></a>
+					<a  href="formulario.html" title="Close" class="close"><img alt="Cerrar PopUp de agradecimiento" src="imagenes/cerrar_calendario.png"></a>
 					<p class="tituloModal">¡MUCHAS GRACIAS POR CONTARNOS ESTA HISTORIA!</p>
 					<p class="segundoRenglon">¡Ahora la historia de otro de los sobrevivientes de la esta cruel guerra <br> podrá ser vista por toda un nación!</p>
 					<p class="final">Esta historia será evaluanda y pronto publicada</p>
@@ -203,7 +293,8 @@
 		</div>
 	</div>
 	<div id="footer">
-		
+		<img alt="Copyright de la aplicación" src="imagenes/copyright.png" id="copyFooter">
+		<img src="imagenes/creditos_boton.png" id="creditosBotonFooter" onclick="mostrarCreditos()">		
 	</div>
 </body>
 </html>

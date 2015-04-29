@@ -9,23 +9,90 @@
 </head>
 <body>
 	<div id="banner">
+		<div id="creditos" style="opacity:0;display:none;width: 100%;height: 100%;background-color: rgba(0,0,0,0.6);position: fixed;z-index: 1;">
+			<div id="textosCreditos" style="width: 780px;height: 380px;background-color: rgba(0,0,0,0.85);position: absolute;top: 15%;left: 22%;">
+				<div id="tituloCreditos" style="width: 100%;height: 90px;">
+					<p style="color: white;font-family: AvenirNextLTPro_Regular;font-size: 27px;margin-left: 323px;float: left;">CRÉDITOS</p>
+					<img alt="Cerrar los créditos" src="imagenes/cerrar_calendario.png" style="float: right;margin: 27px;" onclick="cerrarCreditos()">
+				</div>
+				<div id="personasCreditos" style="font-size: 17px;text-align: center;font-family: AvenirNextLTPro_Regular; width: 732px; height: 100px; margin-left: auto; margin-right: auto;">
+					<div style="width: 80px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: white; float: left;">El Tiempo</p>
+					</div>
+					<div style="width: 504px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Director&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">William Calderón&nbsp;&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Gerente creativo&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Sandra Merino</p>
+					</div>
+					<div style="width: 580px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de diseño&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Isaac Pérez&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de experiencia de usuario&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Luisa Pinto</p>
+					</div>
+					<div style="width: 718px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñador experiencia de usuario&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Jorge Sanabria&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñador visual senior&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Oscar Lozada</p>
+					</div>
+					<div style="width: 640px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñadores visuales junior&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Andrea Rodriguez&nbsp;/&nbsp;Melissa Castaño&nbsp;/&nbsp;Steven Gallego</p>
+					</div>
+					<div style="width: 115px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: white; float: left;">Esri Colombia</p>
+					</div>
+					<div style="width: 350px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Coordinador del proyecto&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Fernando Benitez</p>
+					</div>
+					<div style="width: 515px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de Diseño&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Angie Rodríguez&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Temático SIG&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Andrés Nossa</p>
+					</div>
+					<div style="width: 538px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Equipo de desarrollo&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Diego Triviño&nbsp;/&nbsp;Aarón Ramirez&nbsp;/&nbsp;Nicolás Cantor</p>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div id="background">
 			<div id="imagen_banner">
-				<img src="imagenes/logo_banner.png">
+				<a href="index.html" style=" text-decoration:none;">
+					<img alt="Logo de la aplicación" src="imagenes/logo_banner.png" style="border: 0;">
+				</a>
 			</div>
 			<div id="botones_compartir">
 				<div style="width:100%; height:22px;background-image:url('imagenes/rectangulo_texto_banner.png');line-height: 22px;text-align: center;">
 					<p class="textos" style="font-size: 12px;margin: 0px;">Compartir este especial:</p>
 				</div>
 				<div style="width:100%; height:58px;">
-					<a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://localhost/ProhibidoOlvidar/rostros.html&amp;p[images][0]=http://logicum.co/wp-content/uploads/2013/01/sharetweetbuttons.jpg&amp;p[title]=probando+&amp;p[summary]=Build your custom share buttons from normal images with examples on each button" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
-						<div style="cursor:pointer;width:95px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;">
-							<img src="imagenes/facebook_banner.png">
+					<a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://geoapps.esri.co/prohibidoOlvidar/&amp;p[images][0]=http://logicum.co/wp-content/uploads/2013/01/sharetweetbuttons.jpg&amp;p[title]=probando+&amp;p[summary]=Build your custom share buttons from normal images with examples on each button" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
+						<div id="facebook_boton" style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;">
+							<img alt="" src="imagenes/facebook_banner.png" style="border: 0;">
 						</div>
 					</a>
-					<a onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="http://twitter.com/home?status=Comparta%20http://localhost/ProhibidoOlvidar/rostros.html">
-						<div style="cursor:pointer;width:95px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
-							<img src="imagenes/twitter_banner.png">
+					<a onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="http://twitter.com/home?status=Comparta%20http://geoapps.esri.co/prohibidoOlvidar/">
+						<div id="twitter_boton" style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
+							<img alt="Compartir en Twitter" src="imagenes/twitter_banner.png" style="border: 0;">
+						</div>
+					</a>
+					<a>
+						<a id="googlePlus" href="https://plus.google.com/share?url=http://geoapps.esri.co/prohibidoOlvidar/" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" style="display:none;">
+  							<img  src="https://www.gstatic.com/images/icons/gplus-16.png" alt="Compartelo en Google+"/>
+  						</a>
+						<div id="google_boton" style="cursor:pointer;width:64px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;" onclick="compartirGoogle();">
+							<img alt="Compartir en Google Plus" src="imagenes/google_banner.png">
 						</div>
 					</a>
 				</div>
@@ -33,16 +100,16 @@
 			<div id="botones_menu">
 				<div id="div_botones_menu" style="width:800px; height:100%;margin-left: auto;margin-right: auto;">
 					<div id="boton_rostros" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<a href="rostros.html" style=" text-decoration:none;"><p class="textos" style="font-size: 16px;margin:0px;">LOS ROSTROS</p></a>
+						<a href="rostros.html" style=" text-decoration:none;"><p class="textos" style="font-size: 15px;margin:0px;">LOS ROSTROS</p></a>
 					</div>
 					<div id="boton_mapa" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<a href="mapa.html" style=" text-decoration:none;"><p class="textos" style="font-size: 16px;margin:0px;">MAPA</p></a>
+						<a href="mapa.html#inicio" style=" text-decoration:none;"><p class="textos" style="font-size: 15px;margin:0px;">MAPA</p></a>
 					</div>
 					<div id="boton_formulario" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<a href="formulario.html" style=" text-decoration:none;"><p class="textos" style="font-size: 16px;margin:0px;">CUÉNTENOS SU HISTORIA</p></a>
+						<a href="formulario.html" style=" text-decoration:none;"><p class="textos" style="font-size: 15px;margin:0px;">CUÉNTENOS SU HISTORIA</p></a>
 					</div>
 					<div id="boton_preguntas" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<p class="textos" style="text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);height: 52px;border-bottom: 2px white;border-bottom-style: solid;font-size: 16px;margin:0px;">PREGUNTAS FRECUENTES</p>
+						<p class="textos" style="text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);height: 52px;border-bottom: 2px white;border-bottom-style: solid;font-size: 15px;margin:0px;">PREGUNTAS FRECUENTES</p>
 					</div>					
 				</div>
 			</div>
@@ -61,7 +128,7 @@
 				</div>
 				<!-- contenedor de la imagen pregunta -->
 				<div class="imagenPregunta">
-					<img id="flechaDespliegue1" src="imagenes/arrow_down_preguntasFrecuentes.png">
+					<img alt="Desplegar la respuesta" id="flechaDespliegue1" src="imagenes/arrow_down_preguntasFrecuentes.png">
 				</div>
 			</div>
 			<!-- contenedor de la respuesta 1 -->
@@ -76,7 +143,7 @@
 				</div>
 				<!-- contenedor de la imagen pregunta 2-->
 				<div class="imagenPregunta">
-					<img id="flechaDespliegue2" src="imagenes/arrow_down_preguntasFrecuentes.png">
+					<img alt="Desplegar la respuesta" id="flechaDespliegue2" src="imagenes/arrow_down_preguntasFrecuentes.png">
 				</div>
 			</div>
 			<!-- contenedor de la respuesta 2-->
@@ -91,7 +158,7 @@
 				</div>
 				<!-- contenedor de la imagen pregunta -->
 				<div class="imagenPregunta">
-					<img id="flechaDespliegue3" src="imagenes/arrow_down_preguntasFrecuentes.png">
+					<img alt="Desplegar la respuesta" id="flechaDespliegue3" src="imagenes/arrow_down_preguntasFrecuentes.png">
 				</div>
 			</div>
 			<!-- contenedor de la respuesta 3-->
@@ -106,7 +173,7 @@
 				</div>
 				<!-- contenedor de la imagen pregunta -->
 				<div class="imagenPregunta">
-					<img id="flechaDespliegue4" src="imagenes/arrow_down_preguntasFrecuentes.png">
+					<img alt="Desplegar la respuesta" id="flechaDespliegue4" src="imagenes/arrow_down_preguntasFrecuentes.png">
 				</div>
 			</div>
 			<!-- contenedor de la respuesta 4-->
@@ -121,7 +188,7 @@
 				</div>
 				<!-- contenedor de la imagen pregunta -->
 				<div class="imagenPregunta">
-					<img id="flechaDespliegue5" src="imagenes/arrow_down_preguntasFrecuentes.png">
+					<img alt="Desplegar la respuesta" id="flechaDespliegue5" src="imagenes/arrow_down_preguntasFrecuentes.png">
 				</div>
 			</div>
 			<!-- contenedor de la respuesta 5-->
@@ -136,7 +203,7 @@
 				</div>
 				<!-- contenedor de la imagen pregunta -->
 				<div class="imagenPregunta">
-					<img id="flechaDespliegue6" src="imagenes/arrow_down_preguntasFrecuentes.png">
+					<img alt="Desplegar la respuesta" id="flechaDespliegue6" src="imagenes/arrow_down_preguntasFrecuentes.png">
 				</div>
 			</div>
 			<!-- contenedor de la respuesta 6-->
@@ -151,7 +218,7 @@
 				</div>
 				<!-- contenedor de la imagen pregunta -->
 				<div class="imagenPregunta">
-					<img id="flechaDespliegue7" src="imagenes/arrow_down_preguntasFrecuentes.png">
+					<img alt="Desplegar la respuesta" id="flechaDespliegue7" src="imagenes/arrow_down_preguntasFrecuentes.png">
 				</div>
 			</div>
 			<!-- contenedor de la respuesta 7-->
@@ -162,7 +229,8 @@
 		
 	</div>
 	<div id="footer">
-		
+		<img src="imagenes/copyright.png" id="copyFooter" alt="Copyright de la aplicación">
+		<img src="imagenes/creditos_boton.png" id="creditosBotonFooter" onclick="mostrarCreditos()" alt="Créditos de la aplicación">		
 	</div>
 </body>
 </html>

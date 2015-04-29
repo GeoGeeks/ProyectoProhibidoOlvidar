@@ -31,10 +31,7 @@ require([
                     results.splice(random, 1);
           					if (infos.length>0) {
           						IDimagen += param+1;
-          						document.getElementById(IDimagen).innerHTML= "<img  height='150' width='150' style='opacity:0.25' src="+infos[0].url+">"
-          						//console.log("valor para el ID",IDimagen);
-          						//console.log("entro y muestra", infos[0].url);
-
+          						document.getElementById(IDimagen).innerHTML= "<div class='fotoRostro' style=\"margin-left: auto;margin-right: auto;height:150px; width: 150px;opacity:0.25; background: url('"+infos[0].url+"') no-repeat center center;background-size: contain;\"></div>";
           						param++;
           						if(param !=3)
           							llenarImagenes(param, results);
@@ -50,7 +47,7 @@ require([
               var paginas;
               myFeatureLayer = new QueryTask(servicio);
               var query = new Query();
-              query.where = "1=1";
+              query.where = "1=1 AND VALIDADO=1";
               Ids = myFeatureLayer.executeForIds(query);
               Ids.then(imagenesAleatorias);              
             }

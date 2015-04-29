@@ -22,7 +22,7 @@ function inicialFormulario(){
 		$('#ano').html($('#ano').html()+'<option value="'+fecha+'">'+fecha+'</option>');
 		fecha--;
 	}
-	var edad = 0;
+	var edad = 18;
 	while(edad<121){
 		$('#edad').html($('#edad').html()+'<option value="'+edad+'">'+edad+'</option>');
 		edad++;
@@ -99,7 +99,7 @@ function inicialMapa(){
 		if(tiempo == "Invalid Date")
 			var texto = L.Util.template('{"Nombre":"{Nombre}","Genero":"{Genero}","lugar":"{Lugar}","Edad":"{Edad}","Fecha":"Sin Información","Profesion":"{Profesion}" }', feature.properties);
 		else
-			var texto = L.Util.template('{"Nombre":"{Nombre}","Genero":"{Genero}","lugar":"{Lugar}","Edad":"{Edad}","Fecha":"'+tiempo.getDate()+' de '+meses[tiempo.getMonth()]+' de '+tiempo.getFullYear()+'","Profesion":"{Profesion}" }', feature.properties);
+			var texto = L.Util.template('{"Nombre":"{Nombre}","Genero":"{Genero}","lugar":"{Lugar}","Edad":"{Edad}","Fecha":"'+tiempo.getDate()+' de '+meses[tiempo.getMonth()]+' de '+tiempo.getFullYear()+'","Profesion":"{Profesion}","Grupo":"{Grupo_Armado}" }', feature.properties);
 		var victima = JSON.parse(texto);
 		victimas[feature.id] = victima;
 		return  null; // L.Util.template('<strong>Nombre:{Nombre}</strong><br><strong>Edad:{Edad}</strong><br><strong>Grupo:{Grupo_Armado}</strong>', feature.properties);
@@ -149,21 +149,41 @@ function obtenerTotalVictimas(id){
 
 function verPopUp(victima, id){
 	var nombre;
-	if (victima.Nombre.length <= 18) {
-	  nombre = victima.Nombre;
-	}
-	else{
-	  nombre = victima.Nombre.substring(0, 18);
-	}
+	nombre = victima.Nombre;
 	$("#nombreDetallePopUpMapa").html(nombre.toUpperCase());
-	var genero;
-	(victima.Genero == 1 ) ? genero = "Hombre" : (victima.Genero == 2 ) ? genero = "Mujer" :  genero = "Sin Información";
+	var genero,grupo;
+	switch(victima.Grupo) {
+	    case "1":
+	    	grupo = "FARC";
+	        break;
+        case "2":
+        	grupo = "ELN";
+	        break;
+	    case "3":
+        	grupo = "PARAMILITARES";
+	        break;
+	    case "4":
+        	grupo = "BACRIM";
+	        break;
+	    case "5":
+        	grupo = "FUERZAS ARMADAS";
+	        break;
+	    case "6":
+        	grupo = "OTROS";
+	        break;
+	    default:
+	        grupo = "";
+	        break;
+	}
+	console.log("es:",victima);
+	(victima.Genero == 1 ) ? genero = "Hombre" : (victima.Genero == 2 ) ? genero = "Mujer" :  (victima.Genero == 3 ) ? genero = "LGBTI" :  genero = "Sin Información";
 	$("#generoDetallesPopUpMapa").html(genero);
 	$("#lugarDetallesPopUpMapa").html("Lugar: "+victima.lugar);
 	(victima.Edad != "null" ) ? $("#edadDetallesPopUpMapa").html(victima.Edad+" años") : $("#edadDetallesPopUpMapa").html("Edad: Sin Información");
 	(victima.Fecha != "null" ) ? $("#fechaDetallesPopUpMapa").html("Fecha: "+victima.Fecha) : $("#fechaDetallesPopUpMapa").html("Fecha: Sin Información");
+	(grupo != "" ) ? $("#grupoArmadoPopUpMapa").html("Grupo del que fue víctima: "+grupo) : $("#grupoArmadoPopUpMapa").html("Grupo del que fue víctima: Sin Información");
 	(victima.Profesion != "null" ) ? $("#profesionDetallesPopUpMapa").html(victima.Profesion) : $("#profesionDetallesPopUpMapa").html("Profesión: Sin Información");
-	obtenerImagen(id);
+	obtenerImagen(id, genero);
 }
 
 function verCalendario(){
@@ -243,6 +263,9 @@ function filtrarGeneroMapa(){
         case "mas":
         	filtroGeneroMapa = "Genero=1";
 	        break;
+	    case "lgbti":
+        	filtroGeneroMapa = "Genero=3";
+	        break;
 	    default:
 	        alert("Por favor vuelva a seleccionar un genéro");
 	        break;
@@ -253,7 +276,8 @@ function filtrarGeneroMapa(){
 }
 function filtrarGrupoMapa(){
 	$("#cargandoFiltrosMapa").show();
-	var seleccion = $("#filtroGrupoMapa").val();
+	var seleccion = $("#filtroGrupoArmado").val();
+	console.log("Seleccion:"+seleccion);
 	switch(seleccion) {
 	    case "grupo":
 	        filtroGrupoMapa = "1=1";
@@ -270,6 +294,12 @@ function filtrarGrupoMapa(){
 	    case "4":
         	filtroGrupoMapa = "Grupo_Armado=4";
 	        break;
+	    case "5":
+        	filtroGrupoMapa = "Grupo_Armado=5";
+	        break;
+	    case "6":
+        	filtroGrupoMapa = "Grupo_Armado=6";
+	        break;
 	    default:
 	        alert("Por favor vuelva a seleccionar un grupo armado");
 	        break;
@@ -279,24 +309,57 @@ function filtrarGrupoMapa(){
 	});
 }
 
-function obtenerImagen(id){
+function obtenerImagen(id, genero){
 	require([
         "dojo/parser",
         'esri/layers/FeatureLayer',
         "dojo/ready"
       ], function (parser,FeatureLayer,ready) {
           parser.parse();
-          var servicio = new FeatureLayer('http://services.arcgis.com/8DAUcrpQcpyLMznu/arcgis/rest/services/ProhibidoOlvidar/FeatureServer/0');
+          var servicio = new FeatureLayer('http://services.arcgis.com/8DAUcrpQcpyLMznu/ArcGIS/rest/services/Reporte_Prohibido_Olvidar/FeatureServer/0');
           servicio.on("load", function () {
           	servicio.queryAttachmentInfos(id, agregarImagen, function(err){console.log(err);});
           });
           function agregarImagen(imgs){
-          	if(imgs.length>0)
-          		$("#imagenDetallePopUpMapa").attr('src', imgs[0].url);
-          	else
-          		$("#imagenDetallePopUpMapa").attr('src',"imagenes/default.png");
+          	if(imgs.length>0){
+          		$('#imagenDetallePopUpMapa').css('background', "url('" + imgs[0].url + "') no-repeat center center");
+               	$('#imagenDetallePopUpMapa').css('background-size', "contain");
+          	}
+          	else{
+          		var imagen;
+          		(genero == "Hombre" ) ? imagen = "avatar_hombre" : (genero == "Mujer" ) ? imagen = "avatar_mujer" :  (genero == "LGBTI" ) ? imagen = "avatar_lgbti" :  imagen = "default";
+          		$('#imagenDetallePopUpMapa').css('background', "url('imagenes/rostros/"+imagen+".png') no-repeat center center");
+               	$('#imagenDetallePopUpMapa').css('background-size', "contain");
+          	}
           	$("#popUpMapa").show();
           	$("#cargandoFiltrosMapa").hide();
           }
       });
+}
+
+function compartirGoogle(){
+       $("#googlePlus").click();
+}
+function limpiarFiltros(){
+	$("#cargandoFiltrosMapa").show();
+	filtroEdadMapaMenor = "1=1";
+    filtroEdadMapaMayor = "1=1";
+    filtroGeneroMapa = "1=1";
+    filtroGrupoMapa = "1=1";
+	$(".seleccionar").prop('selectedIndex',0);
+	capaPuntosMapa.setWhere(filtroEdadMapaMenor+' AND '+filtroEdadMapaMayor+' AND '+filtroGeneroMapa+' AND '+filtroGrupoMapa+' AND '+validado,function(){
+		$("#cargandoFiltrosMapa").hide();
+	});
+}
+function mostrarCreditos(){
+  $("#creditos").show();
+  $("#creditos").animate({
+    opacity: '+=1'
+    });
+}
+
+function cerrarCreditos(){
+  $("#creditos").animate({opacity: '-=1'}, "normal", function(){
+    $("#creditos").hide();
+  });
 }

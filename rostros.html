@@ -14,40 +14,99 @@
 <body>
 		
 	<div id="fb-root"></div>
-	<!--<script>
-	(function(d, s, id) {
-		  var js, fjs = d.getElementsByTagName(s)[0];
-		  if (d.getElementById(id)) return;
-		  js = d.createElement(s); js.id = id;
-		  js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.0";
-		  fjs.parentNode.insertBefore(js, fjs);
-	}
-	(document, 'script', 'facebook-jssdk'));
-	</script>-->
 	<script type="text/javascript">
 		function shareFace(){
 			document.getElementById("botonFace").click();
 		} 
 	</script>
-
+	<div id="cargandoFiltrosMapa">
+		<img alt="Cargando" id="imagenCargandoFiltrosMapa" src="imagenes/cargando.gif">
+	</div>
 	<div id="banner">
+		<div id="creditos" style="opacity:0;display:none;width: 100%;height: 100%;background-color: rgba(0,0,0,0.6);position: fixed;z-index: 1;">
+			<div id="textosCreditos" style="width: 780px;height: 380px;background-color: rgba(0,0,0,0.85);position: absolute;top: 15%;left: 22%;">
+				<div id="tituloCreditos" style="width: 100%;height: 90px;">
+					<p style="color: white;font-family: AvenirNextLTPro_Regular;font-size: 27px;margin-left: 323px;float: left;">CRÉDITOS</p>
+					<img alt="Cerrar los créditos" src="imagenes/cerrar_calendario.png" style="float: right;margin: 27px;" onclick="cerrarCreditos()">
+				</div>
+				<div id="personasCreditos" style="font-size: 17px;text-align: center;font-family: AvenirNextLTPro_Regular; width: 732px; height: 100px; margin-left: auto; margin-right: auto;">
+					<div style="width: 80px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: white; float: left;">El Tiempo</p>
+					</div>
+					<div style="width: 504px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Director&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">William Calderón&nbsp;&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Gerente creativo&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Sandra Merino</p>
+					</div>
+					<div style="width: 580px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de diseño&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Isaac Pérez&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de experiencia de usuario&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Luisa Pinto</p>
+					</div>
+					<div style="width: 718px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñador experiencia de usuario&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Jorge Sanabria&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñador visual senior&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Oscar Lozada</p>
+					</div>
+					<div style="width: 640px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Diseñadores visuales junior&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Andrea Rodriguez&nbsp;/&nbsp;Melissa Castaño&nbsp;/&nbsp;Steven Gallego</p>
+					</div>
+					<div style="width: 115px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: white; float: left;">Esri Colombia</p>
+					</div>
+					<div style="width: 350px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Coordinador del proyecto&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Fernando Benitez</p>
+					</div>
+					<div style="width: 515px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Líder de Diseño&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Angie Rodríguez&nbsp;&nbsp;</p>
+						<p style="font-size: 25px; color: rgb(62,99,128); margin: 0; float: left;">*&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Temático SIG&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Andrés Nossa</p>
+					</div>
+					<div style="width: 538px; margin-left: auto; margin-right: auto;height: 30px;">
+						<p style="margin: 0; color: rgb(102,102,102); float: left;">Equipo de desarrollo&nbsp;&nbsp;</p>
+						<p style="margin: 0; color: white; float: left;">Diego Triviño&nbsp;/&nbsp;Aarón Ramirez&nbsp;/&nbsp;Nicolás Cantor</p>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div id="background">
 			<div id="imagen_banner">
-				<img src="imagenes/logo_banner.png">
+				<a href="index.html" style=" text-decoration:none;">
+					<img alt="Logo de la aplicación" src="imagenes/logo_banner.png" style="border: 0;">
+				</a>
 			</div>
 			<div id="botones_compartir">
 				<div style="width:100%; height:22px;background-image:url('imagenes/rectangulo_texto_banner.png');line-height: 22px;text-align: center;">
 					<p class="textos" style="font-size: 12px;margin: 0px;">Compartir este especial:</p>
 				</div>
 				<div style="width:100%; height:58px;">
-					<a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://localhost/ProhibidoOlvidar/rostros.html&amp;p[images][0]=http://logicum.co/wp-content/uploads/2013/01/sharetweetbuttons.jpg&amp;p[title]=probando+&amp;p[summary]=Build your custom share buttons from normal images with examples on each button" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
-						<div style="cursor:pointer;width:95px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;">
-							<img src="imagenes/facebook_banner.png">
+					<a href="http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=http://geoapps.esri.co/prohibidoOlvidar/&amp;p[images][0]=http://logicum.co/wp-content/uploads/2013/01/sharetweetbuttons.jpg&amp;p[title]=probando+&amp;p[summary]=Build your custom share buttons from normal images with examples on each button" onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" >
+						<div id="facebook_boton" style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;">
+							<img alt="Compartir en Facebook" src="imagenes/facebook_banner.png" style="border: 0;">
 						</div>
 					</a>
-					<a onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="http://twitter.com/home?status=Comparta%20http://localhost/ProhibidoOlvidar/rostros.html">
-						<div style="cursor:pointer;width:95px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
-							<img src="imagenes/twitter_banner.png">
+					<a onclick="window.open(this.href, 'mywin','left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="http://twitter.com/home?status=Comparta%20http://geoapps.esri.co/prohibidoOlvidar/">
+						<div id="twitter_boton" style="cursor:pointer;width:63px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 58px;text-align: center;">
+							<img alt="Compartir en Twitter" src="imagenes/twitter_banner.png" style="border: 0;">
+						</div>
+					</a>
+					<a>
+						<a id="googlePlus" href="https://plus.google.com/share?url=http://geoapps.esri.co/prohibidoOlvidar/" onclick="javascript:window.open(this.href,
+  '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" style="display:none;">
+  							<img  src="https://www.gstatic.com/images/icons/gplus-16.png" alt="Compartelo en Google+"/>
+  						</a>
+						<div id="google_boton" style="cursor:pointer;width:64px;height:100%;float:left;background-image:url('imagenes/recuadro_banner.png');line-height: 60px;text-align: center;" onclick="compartirGoogle();">
+							<img alt="Compartir en Google Plus" src="imagenes/google_banner.png">
 						</div>
 					</a>
 				</div>
@@ -55,16 +114,16 @@
 			<div id="botones_menu">
 				<div id="div_botones_menu" style="width:800px; height:100%;margin-left: auto;margin-right: auto;">
 					<div id="boton_rostros" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<p class="textos" style="text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);height: 52px;border-bottom: 2px white;border-bottom-style: solid;font-size: 16px;margin:0px;">LOS ROSTROS</p>
+						<p class="textos" style="text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);height: 52px;border-bottom: 2px white;border-bottom-style: solid;font-size: 15px;margin:0px;">LOS ROSTROS</p>
 					</div>
 					<div id="boton_mapa" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<a href="mapa.html" style=" text-decoration:none;"><p class="textos" style="font-size: 16px;margin:0px;">MAPA</p></a>
+						<a href="mapa.html#inicio" style=" text-decoration:none;"><p class="textos" style="font-size: 15px;margin:0px;">MAPA</p></a>
 					</div>
 					<div id="boton_formulario" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<a href="formulario.html" style=" text-decoration:none;"><p class="textos" style="font-size: 16px;margin:0px;">CUÉNTENOS SU HISTORIA</p></a>
+						<a href="formulario.html" style=" text-decoration:none;"><p class="textos" style="font-size: 15px;margin:0px;">CUÉNTENOS SU HISTORIA</p></a>
 					</div>
 					<div id="boton_preguntas" style="cursor:pointer;margin-left: 60px;width:auto; height:80px;float: left;line-height: 80px;text-align: center;">
-						<a href="preguntasFrecuentes.html" style=" text-decoration:none;"><p class="textos" style="font-size: 16px;margin:0px;">PREGUNTAS FRECUENTES</p></a>
+						<a href="preguntasFrecuentes.html" style=" text-decoration:none;"><p class="textos" style="font-size: 15px;margin:0px;">PREGUNTAS FRECUENTES</p></a>
 					</div>					
 				</div>
 			</div>
@@ -82,14 +141,14 @@
 	<div id="popUpRostro">
 		<div id="detallesPopUpRostro">
            <div style="width: 153px;height: 153px;padding-top: 30px;padding-left: 30px;  float: left; position:realtive;margin-bottom:20px; ">
-              <img src="imagenes/rostros/filtro.png" style="position: absolute;width: 153px;">
-              <img id="imagenDetallePopUpRostro"src="imagenes/victimaTres.png" style="width: 100%;height: 100%; opacity: 0.25;">
+              <img alt="Filtro de los rostros" src="imagenes/rostros/filtro.png" style="position: absolute;width: 153px;">
+              <div id="imagenDetallePopUpRostro" style="width: 100%;height: 100%;opacity:0.25; background: url('') no-repeat center center;background-size: contain;"></div>
            </div>	
            <div style="padding-left: 16px;padding-top: 30px;float: left;width: 513px;  		height: 153px;">
               <div style="width: 100%;height: 40px;">
-	              <img src="imagenes/nombre_popup.png" style="position:absolute;">
-                  <div class="textos" id="nombreDetallePopUpRostro" style="  font-size: 28px;width:435px; height:40px;line-height: 40px;color:white;float: left;  padding-left: 20px;"></div>
-                      <img id="cerrarPopUpRostro" onclick="cerrarPopupRostro();" src="imagenes/cerrarpopup.png" style="float:right;  margin-top: -2px;">
+	              <img alt="Filtro del nombre" src="imagenes/nombre_popup.png" style="position:absolute;">
+                  <div class="textos" id="nombreDetallePopUpRostro" style="overflow: hidden;font-size: 28px;width:435px; height:40px;line-height: 40px;color:white;float: left;  padding-left: 20px;"></div>
+                      <img alt="Cerrar PopUp" id="cerrarPopUpRostro" onclick="cerrarPopupRostro();" src="imagenes/cerrarpopup.png" style="float:right;  margin-top: -2px;">
                   </div>
                   <div style="width: 100%;height: 113px;">
                       <div style="height: 100%;width: 160px;float: left;">
@@ -100,13 +159,14 @@
                       <div style="height: 100%;width: 353px;float: right;">
                           <p  class="textos" id="lugarDetallesPopUpRostro" style="margin-bottom: 0px;color: gray;"></p>
                           <p  class="textos" id="fechaDetallesPopUpRostro" style="margin-bottom: 0px;margin-top: 10px;color: gray;"></p>
+                          <p  class="textos" id="grupoArmadoRostro" style="margin-bottom: 0px;margin-top: 20px;color: gray;"></p>
 	                  </div>
                   </div>
                </div>
                <div id="caracteristicas" style="background-color: rgba(0,0,0,0.8);width: 730px;position: relative;height:0;margin-left: auto;margin-right: auto;top: 11%;transform: translateY(-50%);">
 	                  	<fieldset style="width: 88%;margin-right: auto;margin-left: auto;">
 	  						<legend class="textos"> <p style="margin-left:15px; margin-right:15px;">DESCRIPCIÓN DEL HECHO</p></legend>
-	  							<p  class="textos" id="caracteristicasDetallesPopUpRostro" style="margin-bottom: 0px;margin-top: 10px;color: gray;"></p>
+	  							<p  class="textos" id="caracteristicasDetallesPopUpRostro" style="overflow-y: auto;height: 80px;margin-bottom: 0px;margin-top: 10px;color: gray;"></p>
 	 					</fieldset>
 				</div>
            </div>
@@ -116,14 +176,14 @@
 			<h1>LOS ROSTROS</h1>
 		</div>
 		<div id="centroTexto"style="margin-top:-1px;">
-			<p>Vea en los rostros de los protagonistas la memoria de una guerra larga y dolorosa</p>
+			<p>Vea en los rostros de los protagonistas la memoria de una guerra larga y dolorosa.</p>
 		</div>
-		<div id="filtroRostros" style="margin-top:-1px;height: 32px;">
-			<div id="textoFiltro" style="height: 32px;">
+		<div id="filtroRostros" style="margin-top:-1px;height: 39px;">
+			<div id="textoFiltro" >
 				<p>Filtrar por: </p>
 			</div>
 			<div id="filtroEdad">
-				<select style="padding: 0 0 0 61px !important;top: -4px;" id="Edad">
+				<select style="top: 0px;" id="Edad">
 				  <option value="edad">EDAD</option>
 				  <option value="0-4">0 - 4</option>
 				  <option value="5-11">5-11</option>
@@ -134,50 +194,60 @@
 				</select>
 			</div>
 			<div id="filtroGenero">
-				<select style="top: -4px;" id="Genero">
+				<select style="top: 0px;" id="Genero"> 
 				  <option value="genero">GENERO</option>
 				  <option value="fem">FEMENINO</option>
 				  <option value="mas">MASCULINO</option>
+				  <option value="lgbti">LGBTI</option>
 				</select>
+			</div>
+			<div>
+				<select id="filtroGrupoArmado" class="seleccionar" style="position: absolute;top: 0px;left: 482px;width: 320px;height: 39px;">
+					<option value="grupo" selected="">GRUPO DEL QUE FUE VÍCTIMA</option>
+					<option value="4">BACRIM</option>
+					<option value="2">ELN</option>
+					<option value="1">FARC</option>
+					<option value="5">FUERZAS ARMADAS</option>
+					<option value="3">PARAMILITARES</option>
+					<option value="6">OTROS</option>
+				</select>
+			</div>
+			<div id="botonLimpiar">
+				<img alt="Limpiar los filtros" src="imagenes/botonLimpiar.png" alt="Limpiar los filtros" style="cursor:pointer;height: 37px;position: absolute;top: 0px;  right: 0;" onclick="limpiarFiltros()">
 			</div>
 				
 		</div>
 		<div id="rostrosParteAbajo" style="float:left;">
 			<div id="rostrosGaleria"></div>
-			<div id="rostrosDudas">
-				<p>Si tiene alguna duda o si desea despublicar una historia, escribanos a <a href="mailto:oscloz@eltiempo.com?Subject=Hello%20again" target="_top">oscloz@eltiempo.com</a> </p>
-				<p id="paginacion" style="text-align:right;"></p>
+			<div id="rostrosDudas" style="  width: 1082px;">
+				<p style="float: left;">Si tiene alguna duda o si desea despublicar una historia, escribanos a <a href="mailto:oscloz@eltiempo.com?Subject=Hello%20again" target="_top">oscloz@eltiempo.com</a> </p>
+				<p id="paginacion" style="float:right;text-align:right;  font-size: 15px;"></p>
 				
 			</div>	
 		</div>
-		<div style="width: 112px;float: left;margin-top: 119px;">
-			<div id="anterior" style="color:white;float:left;cursor: pointer;">Anterior</div>
-			<div id="posicion" style="float:left;margin-left: 30px;"><img src="imagenes/sin_seleccion.png"></div>
-			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
-			<div id="uno" style="color:white;float:left;cursor: pointer;" >1990-1995</div>
-			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
-			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
-			<div id="dos" style="color:white;float:left;cursor: pointer;" >1996-2000</div>
-			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
-			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
-			<div id="tres" style="color:white;float:left;cursor: pointer;" >2001-2005</div>
-			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
-			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
-			<div id="cuatro" style="color:white;float:left;cursor: pointer;" >2006-2010</div>
-			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
-			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
-			<div id="cinco" style="color:white;float:left;cursor: pointer;" >2011-2014</div>
-			<div id="posicion" style="float:left;margin-left: 15px;"><img src="imagenes/sin_seleccion.png"></div>
-			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;"></div>
-			<div id="actualidad" style="color:white;float:left;cursor: pointer;">Actualidad</div>
-			<div id="posicion" style="float:left;margin-left: 15px;  margin-top: -3px;"><img src="imagenes/sin_seleccion.png"></div>
+		<div id="lineaTiempoDerecha" style="width: 112px;float: left;margin-top: 85px;">
+			<div style="color:white;padding-bottom: 18px;background-image: url('imagenes/Fechas/anos.png');width: 107px;height: 30px;background-repeat: no-repeat;"></div>
+			<div id="anterior" style="color:white;float:right;cursor: pointer;background-image:url('imagenes/Fechas/anterior.png');height: 30px;width: 107px;margin-right: 9px;"></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 54px;margin-top: 8px;"></div>
+			<div id="primerAno" style="color:white;float:right;cursor: pointer;background-image:url('imagenes/Fechas/primerAno.png');height: 30px;width: 107px;margin-right: 9px;" ></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;margin-top: -2px;"></div>
+			<div id="segundoAno" style="color:white;float:right;cursor: pointer;background-image:url('imagenes/Fechas/segundoAno.png');height: 30px;width: 107px;margin-right: 9px;" ></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;margin-top: -2px;"></div>
+			<div id="tercerAno" style="color:white;float:right;cursor: pointer;background-image:url('imagenes/Fechas/tercerAno.png');height: 30px;width: 107px;margin-right: 9px;" ></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;margin-top: -2px;"></div>
+			<div id="cuartoAno" style="color:white;float:right;cursor: pointer;background-image:url('imagenes/Fechas/cuartoAno.png');height: 30px;width: 107px;margin-right: 9px;" ></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;margin-top: -2px;"></div>
+			<div id="quintoAno" style="color:white;float:right;cursor: pointer;background-image:url('imagenes/Fechas/quintoAno.png');height: 30px;width: 107px;margin-right: 9px;" ></div>
+			<div class="linea" style="border-color: transparent #738082 transparent transparent;width: 88px;border-style: solid;border-width: 1px;height: 62px;margin-top: -2px;"></div>
+			<div id="actualidad" style="color:white;float:right;cursor: pointer;background-image:url('imagenes/Fechas/actualidad.png');height: 30px;width: 107px;background-repeat: no-repeat;margin-top: -10px;margin-right: 9px;"></div>
 
 
 
 	</div>
 	</div>
 	<div id="footer">
-		
+		<img alt="Copyright de la aplicación" src="imagenes/copyright.png" id="copyFooter">
+		<img alt="Créditos de la aplicación" src="imagenes/creditos_boton.png" id="creditosBotonFooter" alt="Creditos de la aplicación" onclick="mostrarCreditos()">		
 	</div>
 </body>
 </html>

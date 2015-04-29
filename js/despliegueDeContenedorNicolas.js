@@ -14,8 +14,9 @@ $(document).ready(function(){
     $("#flechaDespliegue1").click(function(){
     	if($('#respuesta1').css('display') == 'none'){
     		$('#flechaDespliegue1').attr('src','imagenes/arrow_up_preguntasFrecuentes.png');
-            $('#pregunta1').css('border-color', '#508DBC transparent #508DBC transparent');
-    		
+            $('#pregunta1').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(80, 141, 188, 0.4) transparent');
+            $('#respuesta1').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(115, 128, 130, 0.4) transparent');
+            $('#respuesta1').css('border-width', '2px');
     	}else{
     		$('#flechaDespliegue1').attr('src','imagenes/arrow_down_preguntasFrecuentes.png');
             $('#pregunta1').css('border-color', '#738082 transparent #738082 transparent');
@@ -30,7 +31,9 @@ $(document).ready(function(){
     $("#flechaDespliegue2").click(function(){
         if($('#respuesta2').css('display') == 'none'){
             $('#flechaDespliegue2').attr('src','imagenes/arrow_up_preguntasFrecuentes.png');
-            $('#pregunta2').css('border-color', '#508DBC transparent #508DBC transparent');
+            $('#pregunta2').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(80, 141, 188, 0.4) transparent');
+            $('#respuesta2').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(115, 128, 130, 0.4) transparent');
+            $('#respuesta2').css('border-width', '2px');
             
         }else{
             $('#flechaDespliegue2').attr('src','imagenes/arrow_down_preguntasFrecuentes.png');
@@ -46,7 +49,9 @@ $(document).ready(function(){
     $("#flechaDespliegue3").click(function(){
         if($('#respuesta3').css('display') == 'none'){
             $('#flechaDespliegue3').attr('src','imagenes/arrow_up_preguntasFrecuentes.png');
-            $('#pregunta3').css('border-color', '#508DBC transparent #508DBC transparent');
+            $('#pregunta3').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(80, 141, 188, 0.4) transparent');
+            $('#respuesta3').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(115, 128, 130, 0.4) transparent');
+            $('#respuesta3').css('border-width', '2px');
             
         }else{
             $('#flechaDespliegue3').attr('src','imagenes/arrow_down_preguntasFrecuentes.png');
@@ -62,7 +67,9 @@ $(document).ready(function(){
     $("#flechaDespliegue4").click(function(){
         if($('#respuesta4').css('display') == 'none'){
             $('#flechaDespliegue4').attr('src','imagenes/arrow_up_preguntasFrecuentes.png');
-            $('#pregunta4').css('border-color', '#508DBC transparent #508DBC transparent');
+            $('#pregunta4').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(80, 141, 188, 0.4) transparent');
+            $('#respuesta4').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(115, 128, 130, 0.4) transparent');
+            $('#respuesta4').css('border-width', '2px');
             
         }else{
             $('#flechaDespliegue4').attr('src','imagenes/arrow_down_preguntasFrecuentes.png');
@@ -80,7 +87,9 @@ $(document).ready(function(){
     $("#flechaDespliegue5").click(function(){
         if($('#respuesta5').css('display') == 'none'){
             $('#flechaDespliegue5').attr('src','imagenes/arrow_up_preguntasFrecuentes.png');
-            $('#pregunta5').css('border-color', '#508DBC transparent #508DBC transparent');
+            $('#pregunta5').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(80, 141, 188, 0.4) transparent');
+            $('#respuesta5').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(115, 128, 130, 0.4) transparent');
+            $('#respuesta5').css('border-width', '2px');
             
         }else{
             $('#flechaDespliegue5').attr('src','imagenes/arrow_down_preguntasFrecuentes.png');
@@ -96,7 +105,9 @@ $(document).ready(function(){
     $("#flechaDespliegue6").click(function(){
         if($('#respuesta6').css('display') == 'none'){
             $('#flechaDespliegue6').attr('src','imagenes/arrow_up_preguntasFrecuentes.png');
-            $('#pregunta6').css('border-color', '#508DBC transparent #508DBC transparent');
+            $('#pregunta6').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(80, 141, 188, 0.4) transparent');
+            $('#respuesta6').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(115, 128, 130, 0.4) transparent');
+            $('#respuesta6').css('border-width', '2px');
             
         }else{
             $('#flechaDespliegue6').attr('src','imagenes/arrow_down_preguntasFrecuentes.png');
@@ -112,7 +123,9 @@ $(document).ready(function(){
     $("#flechaDespliegue7").click(function(){
         if($('#respuesta7').css('display') == 'none'){
             $('#flechaDespliegue7').attr('src','imagenes/arrow_up_preguntasFrecuentes.png');
-            $('#pregunta7').css('border-color', '#508DBC transparent #508DBC transparent');
+            $('#pregunta7').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(80, 141, 188, 0.4) transparent');
+            $('#respuesta7').css('border-color', 'rgba(80, 141, 188, 0.4) transparent rgba(115, 128, 130, 0.4) transparent');
+            $('#respuesta7').css('border-width', '2px');
             
         }else{
             $('#flechaDespliegue7').attr('src','imagenes/arrow_down_preguntasFrecuentes.png');
@@ -158,33 +171,69 @@ $( document ).ready(function() {
       //    var fecha = ($('#dia').val()+"/"+$('#mes').val()+"/"+$('#ano').val());
           var alertaUno = "Por favor diligenciar los siguientes campos:\n ";
           var alertaDos = "";
+          console.log("tamaño:"+alertaDos.length);
           var dia = $('#dia').val(), mes = $('#mes').val(), ano = $('#ano').val();
+          $("#verificarCampos").attr("href", "#titulo");
           if($("#nombreVictima").val().length < 1){
-              alertaDos = "-Nombre de la victima \n ";  
-          }
-          if(departamentos < 1){
-                alertaDos = alertaDos + "\n -Departamento";
+              alertaDos = "-Nombre de la victima \n "; 
+              $('#nombreObligatorio').css('display', 'block');
+              $('#nombreVictima').css('border-color', '#4c637f');
+              $("#verificarCampos").attr("href", "#formulario");
+          }else{
+              $('#nombreObligatorio').css('display', 'none');
+              $('#nombreVictima').css('border-color', '#FFFFFF');
           }
           if(genero < 0){
+              if(alertaDos.length < 1) 
+                $("#verificarCampos").attr("href", "#contenedorGenero");
              alertaDos = alertaDos + "\n -Genero";
+             $('#generoObligatorio').css('display', 'block'); 
+             $('#contenedorGenero').css('margin-top', '54px');
+          }else{
+              $('#generoObligatorio').css('display', 'none'); 
+              $('#contenedorGenero').css('margin-top', '54px');
           }
-
+          if(departamentos < 1){
+                if(alertaDos.length < 1) 
+                  $("#verificarCampos").attr("href", "#contenedorDepto");
+                alertaDos = alertaDos + "\n -Departamento";
+                $('#deptoObligatorio').css('display', 'block'); 
+                $('#departamentos').css('border-color', '#4c637f');
+                $('#contenedorDepto').css('margin-top', '45px');
+          }else{
+                $('#deptoObligatorio').css('display', 'none'); 
+                $('#departamentos').css('border-color', '#FFFFFF');
+          }
           if(dia != "" || mes != "" || ano != ""){
             if(dia == "" || mes == "" || ano == ""){
+              if(alertaDos.length < 1) 
+                $("#verificarCampos").attr("href", "#denosFecha");
               alertaDos += "\n -Faltan campos en la fecha ingresada";
+              $('#fechaIncorrecta').css('display', 'block'); 
+              $('#fechaIncorrecta').html('Faltan campos en la fecha ingresada');
             }else{
               var fecha = dia + "/"+ mes +"/"+ano;
               console.log(fecha);
               if(existeFecha(fecha)){
-                if(!validarFechaMenorActual(fecha))
+                if(!validarFechaMenorActual(fecha)){
+                  if(alertaDos.length < 1) 
+                    $("#verificarCampos").attr("href", "#denosFecha");
                   alertaDos += "\n -Por favor seleccione una fecha menor a la actual";
-              }else
+                  $('#fechaIncorrecta').css('display', 'block'); 
+                  $('#fechaIncorrecta').html('Por favor seleccione una fecha menor a la actual');
+                }
+              }else{
+                if(alertaDos.length < 1) 
+                  $("#verificarCampos").attr("href", "#denosFecha");
                 alertaDos += "\n -La fecha ingresada no existe";
+                $('#fechaIncorrecta').css('display', 'block'); 
+                $('#fechaIncorrecta').html('La fecha ingresada no existe');
+              }
             }
           }
           
           if(alertaDos.length > 1){
-            alert(alertaUno + " " + alertaDos);
+            //alert(alertaUno + " " + alertaDos);
           }else{
             //locate();
              $('#formulario').css('display', 'none');  
@@ -221,16 +270,24 @@ $( document ).ready(function() {
 
        
 
-      $("#hombre").click(function(){
+      $("#c1").click(function(){
           genero = 1;
+          $('#lgbti').css('background', 'url(imagenes/radio.png) -28px top no-repeat');
           $('#mujer').css('background', 'url(imagenes/radio.png) -28px top no-repeat');
           $('#hombre').css('background', 'url(imagenes/radio.png) left top no-repeat');
 
       });
-        $("#mujer").click(function(){
+      $("#c2").click(function(){
           genero = 2;
+          $('#lgbti').css('background', 'url(imagenes/radio.png) -28px top no-repeat');
           $('#hombre').css('background', 'url(imagenes/radio.png) -28px top no-repeat');
           $('#mujer').css('background', 'url(imagenes/radio.png) left top no-repeat');
+      });
+      $("#c3").click(function(){
+          genero = 3;
+          $('#lgbti').css('background', 'url(imagenes/radio.png) left top no-repeat');
+          $('#hombre').css('background', 'url(imagenes/radio.png) -28px top no-repeat');
+          $('#mujer').css('background', 'url(imagenes/radio.png) -28px top no-repeat');
       });
 
       $("#departamentos").change(function() {
@@ -256,9 +313,15 @@ $( document ).ready(function() {
       //map.infoWindow.resize(200,125);  
     function locate() {
      // map.graphics.clear();
-      var address = {
-        "SingleLine": $("#municipios option:selected").text()+", "+$("#departamentos option:selected").text()+", Colombia"
-      };
+      var address;
+      if($("#municipios option:selected").text()!="Ciudades y municipios")
+        address = {
+          "SingleLine": $("#municipios option:selected").text()+", "+$("#departamentos option:selected").text()+", Colombia"
+        };
+      else
+        address = {
+          "SingleLine": "Departamento "+$("#departamentos option:selected").text()+", Colombia"
+        };
       var options = {
         address: address,
         outFields: ["Loc_name"]
@@ -285,20 +348,26 @@ $( document ).ready(function() {
           var select = document.getElementById("departamentos");
           var nombre = select.options[select.selectedIndex].innerHTML;
           var lugar = nombre;
-          if($("#municipios").val()!=""){
-            select = document.getElementById("municipios");
-            nombre = select.options[select.selectedIndex].innerHTML;
-            lugar +=","+nombre;
+          var municipio = $("#municipios option:selected").text();
+          if(municipio!="Ciudades y municipios"){
+           /* select = document.getElementById("municipios");
+            nombre = select.options[select.selectedIndex].innerHTML;*/
+            lugar +=","+municipio;
           }
-          console.log("lugar:"+lugar);
+          var fecha = ($('#ano').val()+"/"+$('#mes').val()+"/"+$('#dia').val()+" 06:00:00");
+          console.log("tamaño:"+fecha.length)
+          if(fecha.length<12)
+            fecha = null;
+          console.log("fecha:"+fecha);
           var attr = {"Nombre":$("#nombreVictima").val(), 
                       "Genero":genero,
                       "cod_dane":$("#departamentos").val(),
                       "Edad":$("#edad").val(),
-                      "Fecha_Evento":'1988/05/25',
+                      "Fecha_Evento":fecha,
                       "Profesion":$("#profesion").val(),
                       "Descripcion":$("#descripcion").val(),
                       "Lugar":lugar,
+                      "Grupo_Armado":$("#selectGrupoArmado").val(),
                       "Validado":0};
           console.log("attr",attr);
           var graphic = new Graphic(pt,sms,attr);
@@ -312,7 +381,7 @@ $( document ).ready(function() {
     function agregarImagen(evt){
         var objectId=evt.adds[0].objectId
         console.log("es:",evt.adds[0].objectId);
-        featureLayer.addAttachment(objectId, document.getElementById("archivo") ,callback , function(err){console.log(err);});  
+        featureLayer.addAttachment(objectId, document.getElementById("archivo") ,callback , function(err){console.log(err);});
     }
     function callback(result){  
       console.log(result);  
@@ -365,8 +434,9 @@ function cargarDeptos(){
 
 
   function cargarMunicipios(){
+    $("#cargandoMunicipios").show();
     var depto = $("#departamentos").val();
-    $("#municipios").html("<option value=\"\" disabled selected>Municipios</option>");
+    $("#municipios").html("<option value=\"\" disabled selected>Ciudades y municipios</option>");
     require([
         "esri/layers/FeatureLayer",
         "esri/tasks/query",
@@ -386,6 +456,7 @@ function cargarDeptos(){
             query.returnGeometry = false;
             query.outFields = ["NOMBRE_ENT","COD_MUNICI"];
             query.where = "COD_DEPART='"+depto+"'";
+            query.orderByFields = ["NOMBRE_ENT ASC"];
             departamentos = myFeatureLayer.execute(query);
             departamentos.then(showResults);
           }
@@ -395,7 +466,25 @@ function cargarDeptos(){
               var datos = results.features[i].attributes;
               $("#municipios").html($("#municipios").html()+"<option value=\""+datos.COD_MUNICI+"\">"+datos.NOMBRE_ENT+"</option>");
             }
+            $("#cargandoMunicipios").hide();
           }          
         });
       });
   }
+
+
+function compartirGoogle(){
+       $("#googlePlus").click();
+}
+function mostrarCreditos(){
+  $("#creditos").show();
+  $("#creditos").animate({
+    opacity: '+=1'
+    });
+}
+
+function cerrarCreditos(){
+  $("#creditos").animate({opacity: '-=1'}, "normal", function(){
+    $("#creditos").hide();
+  });
+}

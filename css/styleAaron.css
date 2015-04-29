@@ -40,13 +40,6 @@ html, body{
 	font-size: 17px;
 }
 
-
-
-
-
-
-
-
 /*Fin barra inicio*/
 #body{
 	width: 100%;
@@ -55,8 +48,21 @@ html, body{
 #footer{
 	width: 100%;
 	height: 64px;
-	background-image: url("../imagenes/piePag.png");
-	background-size: 100% 100%;
+	/*/background-image: url("../imagenes/piePag.png");
+	background-size: 100% 100%;*/
+	background-color: rgb(223,223,223);
+	position: relative;
+}
+#copyFooter{
+	position: absolute;
+  	top: 11px;
+  	left: 20px;
+}
+#creditosBotonFooter{
+	position: absolute;
+  	right: 22px;
+  	top: 20px;
+  	cursor: pointer;
 }
 @font-face {
    font-family: AvenirNextLTPro_Bold;
@@ -79,8 +85,14 @@ html, body{
    src: url(../font/AvenirNextLTPro-CnIt.otf);
 }
 @font-face {
-   font-family: AvenirNextLTPro_Demi;
-   src: url(../font/AvenirNextLTPro-Demi.otf);
+     font-family: 'AvenirNextLTPro_Demi';
+	  src: url('../font/Demi/AvenirNextLTPro-Demi.eot'); /* IE9 Compat Modes */
+	  src: url('../font/Demi/AvenirNextLTPro-Demi.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	       url('../font/Demi/AvenirNextLTPro-Demi.woff') format('woff'), /* Modern Browsers */
+	       url('../font/Demi/AvenirNextLTPro-Demi.ttf') format('truetype'), /* Safari, Android, iOS */
+	       url('../font/Demi/AvenirNextLTPro-Demi.svg') format('svg'); /* Legacy iOS */
+	  font-weight: normal;
+	  font-style: normal;
 }
 @font-face {
    font-family: AvenirNextLTPro_DemiCn;
@@ -115,8 +127,14 @@ html, body{
    src: url(../font/AvenirNextLTPro-MediumCnIt.otf);
 }
 @font-face {
-   font-family: AvenirNextLTPro_Regular;
-   src: url(../font/AvenirNextLTPro-Regular.otf);
+    font-family: 'AvenirNextLTPro_Regular';
+	  src: url('../font/Regular/AvenirNextLTPro-Regular.eot'); /* IE9 Compat Modes */
+	  src: url('../font/Regular/AvenirNextLTPro-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+	       url('../font/Regular/AvenirNextLTPro-Regular.woff') format('woff'), /* Modern Browsers */
+	       url('../font/Regular/AvenirNextLTPro-Regular.ttf') format('truetype'), /* Safari, Android, iOS */
+	       url('../font/Regular/AvenirNextLTPro-Regular.svg') format('svg'); /* Legacy iOS */
+	  font-weight: normal;
+	  font-style: normal;
 }
 @font-face {
    font-family: AvenirNextLTPro_UltLtCn;
@@ -127,23 +145,36 @@ html, body{
    src: url(../font/AvenirNextLTPro-UltLtCnIt.otf);
 }
 select{
-	background-image: url('../imagenes/arrow_down.png'), -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0));
+	background-image: url('../imagenes/arrow_down.png');
+  	background-size: auto 100%;
 	background-color: transparent;
 	background-position: 100% center;
 	background-repeat: no-repeat;
-	border: 1px transparent;
+	border: 1px solid;
+	border-color: transparent;
 	-webkit-appearance: button;
+	-moz-appearance: none;
 	cursor: pointer;
-	padding: 0 0 0 25px;
-	height: 33px;
-	color: #47494E;
+	padding: 0 0 0 45px;
+  	height: 39px;
+	color: rgb(67,65,66);
+	border-top: solid;
+	border-bottom: solid;
+	border-width: 1px;
+	border-color: rgb(67,65,66);
+  	border-left: none;
+  	border-right: none;
+}
+select::-ms-expand {
+    display: none;
 }
 option{
 	background-color: #47494E;
-	color: white;
+	color: #7b7b7b;
 }
 
 #tituloRostros{
+  	overflow: hidden;
 	margin-top: 45px;
 	margin-left: auto;
 	margin-right: auto;
@@ -163,13 +194,26 @@ option{
 	margin: 0;
 	padding: 0;
 }
+#cargandoFiltrosMapa, #cargandoFiltrosMapaRostros{
+	width: 100% !important;
+	height: 100% !important;
+	position: fixed;
+	display: none;
+	background-color: rgba(0,0,0,0.8);
+	z-index: 1001;
+}
+#imagenCargandoFiltrosMapa, #imagenCargandoFiltrosMapaRostros{
+	width: 110px;
+	position: absolute;
+	left: 46%;
+	top: 41%;
+}
 #centroTexto{
-	width: 790px;
+	width: 980px;
 	height: 39px;
 	margin-left: auto;
 	margin-right: auto;
 	border-top: solid;
-	border-bottom: solid;
 	border-width: 1px;
 	text-align: center;
 	border-color: rgb(67,65,66);
@@ -185,15 +229,11 @@ option{
 }
 #filtroRostros{
 	position: relative;
-	width: 471px;
-	height: 39px;
+	width: 980px;
+	height: 33px;
 	margin-left: auto;
 	margin-right: auto;
-	border-top: solid;
-	border-bottom: solid;
-	border-width: 1px;
 	text-align: center;
-	border-color: rgb(67,65,66);
 	line-height: 39px;
 	padding: 0;
 }
@@ -214,10 +254,11 @@ option{
     display: inline;
 }
 #textoFiltro{
-	width: 111px;
-	height: 36px;
+	border-top: solid;
+	border-bottom: solid;
+	width: 112px;
+  	height: 37px;
 	text-align: center;
-	line-height: 39px;
 	padding: 0;
 	border-right: solid;
 	border-color: rgb(67,65,66);
@@ -225,20 +266,19 @@ option{
 }
 #filtroEdad select{
 	font-family: AvenirNextLTPro_Regular;
-	font-size: 15px;
+	font-size: 14px;
 	position: absolute;
-	width: 203px;
-	height: 39px;
+	width: 202px;
 	left: 112px;
 	top: 0;
 }
 #filtroGenero select{
 	font-family: AvenirNextLTPro_Regular;
-	font-size: 15px;
+  	padding: 0 0 0 30px;
+	font-size: 14px;
 	position: absolute;
-	width: 161px;
-	height: 39px;
-	left: 314px;
+	width: 167px;
+	left: 315px;
 	top: 0;
 }
 #filtroGrupo select{
@@ -251,7 +291,7 @@ option{
 	top: 0;
 }
 #rostrosParteAbajo{
-	width: 1208px;
+	width: 87%;
 	height: 536px;
 	margin-right: auto;
 	margin-left: auto;
@@ -259,7 +299,7 @@ option{
 }
 #rostrosGaleria{
 	position: relative;
-	width: 1031px;
+	width: 100%;
 	height: 504px;	
 	margin-left: 33px;
 }
@@ -295,11 +335,12 @@ option{
 #rostrosDudas{
 	color: rgb(113,113,117);
 	margin-left:33px;
-	margin-top: 30px;
+	margin-top:23px;
 	font-family: AvenirNextLTPro_Regular;
 	font-size: 16px;
 }
 #rostrosDudas a{
+	margin-left: 8px;
 	color: white;
 	text-decoration: none;
 }
@@ -359,12 +400,159 @@ option{
 	text-align: center;
 	color: white;
 	font-family: AvenirNextLTPro_Regular;
-	margin-left: 264px;
-	margin-top: 150px;
+	padding-top: 150px;
 }
 #rostros:hover{
 	background-image: none;
 }
 #rostros:hover #rostroImagen{
 	display: none;
+}
+
+/* hover de la sección banner */
+#boton_rostros:hover p{
+  text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);
+  height: 52px;
+  border-bottom: 2px white;
+  border-bottom-style: solid;
+  font-size: 16px;
+  margin: 0px;
+}
+
+#boton_mapa:hover p{
+  text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);
+  height: 52px;
+  border-bottom: 2px white;
+  border-bottom-style: solid;
+  font-size: 16px;
+  margin: 0px;
+}
+
+#boton_formulario:hover p{
+  text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);
+  height: 52px;
+  border-bottom: 2px white;
+  border-bottom-style: solid;
+  font-size: 16px;
+  margin: 0px;
+}
+
+#boton_preguntas:hover p{
+  text-shadow: -1px -1px 23px rgba(255, 255, 255, 1);
+  height: 52px;
+  border-bottom: 2px white;
+  border-bottom-style: solid;
+  font-size: 16px;
+  margin: 0px;
+}
+
+#google_boton:hover{
+       background-color:#dd4b39;        
+       background-image:url('') !important;
+}
+#twitter_boton:hover{
+       background-color:#00aced;        
+       background-image:url('') !important;
+}
+#facebook_boton:hover{
+       background-color:#3b5998;        
+       background-image:url('') !important;
+}
+.pagSeleccionada{
+	color: rgba(30,99,132,0.7) !important;
+	border-bottom: 1px;
+	border-bottom-style: solid;
+}
+#caracteristicasDetallesPopUpRostro::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+}
+
+#caracteristicasDetallesPopUpRostro::-webkit-scrollbar
+{
+	width: 8px;
+	background-color: #F5F5F5;
+}
+
+#caracteristicasDetallesPopUpRostro::-webkit-scrollbar-thumb
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
+
+@media screen and (max-width: 1281px) {
+	#textosCreditos{
+		left: 19% !important;
+	}
+	#imagen_banner {
+		margin-left: 0px;
+	}
+	#div_botones_menu{
+		width: 760px !important;
+	}
+	#botones_menu {
+	  	margin-left: 240px;
+	}
+	#boton_rostros{
+	  	margin-left: 20px !important;
+	}
+}
+@media screen and (max-width: 1171px) {
+	#rostrosDudas{
+		width: 820px !important;
+	}
+	#lineaTiempoDerecha{
+	  	margin-top: 65px !important;
+	}
+	.rostro{
+		width: 120px;
+		height: 120px;
+	}
+	.nombreRostro{
+		width: 120px;
+		overflow: hidden;
+	}
+	.fotoRostro{
+		height: 120px !important;
+  		width: 120px !important;
+	}
+	#imagenPrincipal img{
+		margin-top: 17px;
+		height: 206px;
+	}
+	#textoPrincipal{
+		margin-top: 65px;
+	}
+	#botonPrincipal{
+		margin-top: 31px;
+	}
+	#copyFooter{
+		height: 37.5px;
+  		left: 10px;
+	}
+	#creditosBotonFooter{
+		height: 30px;
+		right: 12px;
+  		top: 18px;
+	}
+	#textosCreditos{
+		left: 11% !important;
+	}
+	#imagen_banner a img{
+		height: 73px;
+		margin-top: 5px;
+	}
+	#boton_rostros{
+		margin-left: 0px !important;
+	}
+	#boton_mapa{
+		margin-left: 2% !important;
+	}
+	#boton_formulario{
+		margin-left: 2% !important;
+	}
+	#boton_preguntas{
+		margin-left: 2% !important;
+	}
 }
